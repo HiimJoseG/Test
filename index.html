@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Tessa!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom, #ffe6f2, #a0e9ff);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    #card, #quiz, #result, #bajaBlast, #rating, #trexPage {
+      display: none;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ff69b4;
+      text-align: center;
+      max-width: 420px;
+      z-index: 1;
+    }
+
+    #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn {
+      padding: 12px 25px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #bajaBtn {
+      background: linear-gradient(45deg, #00bcd4, #4fc3f7);
+      margin-left: 10px;
+    }
+
+    #ratingBtn {
+      background: linear-gradient(45deg, #ffd700, #ffb300);
+      margin-left: 10px;
+    }
+
+    #trexBtn {
+      background: linear-gradient(45deg, #e91e63, #f06292);
+      margin-left: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    #backBtn, #backToResultBtn, #backFromTrexBtn {
+      background: #6c757d;
+    }
+
+    h1 {
+      color: #d63384;
+    }
+
+    .hello-kitty {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .emoji-decor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatEmoji 12s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatEmoji {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+      }
+    }
+
+    .question {
+      margin: 20px 0;
+      font-size: 1.2em;
+    }
+
+    .answers button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background: #ffd6ec;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    #messageBox {
+      background: #fff0fa;
+      border: 2px dashed #ff69b4;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 15px;
+      font-size: 1em;
+      color: #333;
+    }
+
+    #timerScore {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: #d63384;
+      font-size: 1.1em;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .baja-cup {
+      width: 200px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #bajaBlast {
+      background: linear-gradient(135deg, #e3f2fd, #b3e5fc);
+      border: 3px solid #00bcd4;
+    }
+
+    #rating {
+      background: linear-gradient(135deg, #fff8e1, #ffecb3);
+      border: 3px solid #ffd700;
+    }
+
+    #trexPage {
+      background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+      border: 3px solid #e91e63;
+      max-width: 90vw;
+      max-height: 90vh;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .stars {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .star {
+      font-size: 2.5rem;
+      cursor: pointer;
+      color: #ddd;
+      transition: color 0.2s;
+    }
+
+    .star:hover,
+    .star.active {
+      color: #ffd700;
+    }
+
+    .rating-message {
+      background: #fff9c4;
+      border: 2px dashed #ffd700;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: #333;
+      display: none;
+    }
+
+    .button-group {
+      margin-top: 15px;
+    }
+
+    .button-group button {
+      margin: 5px;
+    }
+
+    .trex-fullscreen {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(233, 30, 99, 0.3);
+      margin: 20px 0;
+      animation: wiggle 3s ease-in-out infinite;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-2deg); }
+      75% { transform: rotate(2deg); }
+    }
+
+    .trex-message {
+      background: #fff0f5;
+      border: 3px dashed #e91e63;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px 0;
+      font-size: 1.2em;
+      color: #880e4f;
+      font-weight: bold;
+    }
+
+    .sparkles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .sparkle {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 1.5rem;
+      animation: sparkleFloat 4s linear infinite;
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+<div class="emoji-decor" id="emojiDecor"></div>
+
+<div id="timerScore" style="display:none;">
+  Time: <span id="timer">0</span>s  Score: <span id="liveScore">0</span>/10
+</div>
+
+<button id="startBtn">🎁 Click to Open, Tessa!</button>
+<img class="hello-kitty" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWV4YnJ4d2txc3BqY3RoOWQ5N3FwODIyZjY2dXcyNWUxd3BlNzhscyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wNJBF6U6VZWmLny/giphy.gif" alt="Hello Kitty GIFF" />
+
+<div id="card">
+ <img id="trex-result" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+       alt="T-Rex GIF" 
+       style="width: 120px; margin-bottom: 10px;" />
+  <img class="hello-kitty" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExanpydzNnMmFqYzYzMWhqd2Nkcm1lNnd0MGF4eml5MG1iZzNzdHAzbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZqbBT64ECtjy/giphy.gif" alt="Hello Kitty GIF" />
+  <h1>🎉 Happy 16th Birthday, Tess! 🐚</h1>
+  <p>You're awesome, great to talk to, super funny, and you're all around amazing (I think so). Hope you get better at fort. Keep being you! 💖</p>
+  <div id="messageBox">
+
+    Hey Tessa,<br />
+    Can't belive you started out thinking I was somebody you hated, or would hate. I think I'm past that point though...Right? Hope you have a great day (and birthday) also hope you pass that test ON FRIDAYYY! May your year continue to be filled with joy, friends, and the courage to follow through with your goals. Keep  being awesome as well. Stay grinding on fortnite twin. 🌊💙<br />
+    — Jose
+  </div>
+  <button id="nextBtn"> Woahhh Random quiz option??? 🎮</button>
+</div>
+
+<div id="quiz">
+   <img id="trex-result" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+       alt="T-Rex Quiz" 
+       style="width: 100px; margin: 0 auto 10px; display: block;" />
+  <div class="question" id="question">Loading...</div>
+  <div class="answers" id="answers"></div>
+</div>
+
+<div id="result">
+  <h2>🎊 You did it! 🎊</h2>
+  <img id="trex-result" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+       alt="T-Rex Result" 
+       style="width: 100px; margin-bottom: 10px;" />
+  <p id="scoreText"></p>
+  <div id="cakeSurprise" style="display:none; flex-direction: column; align-items: center; margin-top: 20px;">
+    <img id="cakeImage" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm54eDR0dnVrbzZmOHNnOGpxMnR1c2dlcnkwODljN2xnZjNzNXM5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11USZ5ilAUYRMI/giphy.gif" alt="Pink Cake GIF" style="width: 150px; cursor: pointer; animation: bounce 1.2s infinite;" />
+    <p style="color: #d63384; font-weight: bold;">🎂 Click the cake! 🎂</p>
+  </div>
+  <div id="cakeMessage" style="display:none; background: #fff0f9; border: 2px dashed #ff69b4; padding: 15px 25px; border-radius: 12px; font-size: 1.1em; margin-top: 15px; max-width: 400px; text-align: center;">
+    🎉 Perfect score! You got them all right, geek. — Jose 
+  </div>
+  <div class="button-group">
+    <button id="restartBtn">🔁 Play Again</button>
+    <button id="bajaBtn">🥤 Baja Blast Time!</button>
+    <button id="ratingBtn">⭐ Rate This Quiz!</button>
+    <button id="trexBtn">🦕 T-Rex Surprise!</button>
+  </div>
+</div>
+
+<!-- Baja Blast section -->
+<div id="bajaBlast">
+  <h2 style="color: #00bcd4;">🌊 Baja Blast! 🌊</h2>
+  <img class="baja-cup" src="https://images.squarespace-cdn.com/content/v1/5026a1d184aef945913b06f9/1563589488053-N57TCKFNU4KPE97PFC6T/MTN+Dew+Baja+Blast+Zero.jpg" alt="Baja Blast Cup" />
+  <p style="color: #00695c; font-size: 1.1em;">The Best Drink! 🎉</p>
+  <p style="color: #00838f;">Baja Blast! 🏝️</p>
+  <button id="backBtn">← Back to Results</button>
+</div>
+
+<!-- Rating section -->
+<div id="rating">
+  <h2 style="color: #ff8f00;">⭐ Rate This Quiz! ⭐</h2>
+  <p style="color: #e65100;">How did you like the birthday quiz experience?</p>
+  
+  <div class="stars" id="starRating">
+    <span class="star" data-rating="1">⭐</span>
+    <span class="star" data-rating="2">⭐</span>
+    <span class="star" data-rating="3">⭐</span>
+    <span class="star" data-rating="4">⭐</span>
+    <span class="star" data-rating="5">⭐</span>
+  </div>
+  
+  <div class="rating-message" id="ratingMessage"></div>
+  
+  <button id="backToResultBtn">← Back to Results</button>
+</div>
+
+<!-- T-Rex in Pink Tutu Full Page -->
+<div id="trexPage">
+  <div class="sparkles" id="sparkles"></div>
+  <h1 style="color: #e91e63; font-size: 2.5em;">🦕✨ SURPRISE! ✨🦕</h1>
+  <img class="trex-fullscreen" src="https://media.craiyon.com/2025-04-27/xaYEbeUET5yJxMJYLy--jQ.webp" alt="T-Rex in Pink Tutu" />
+  
+  <div class="trex-message">
+    🎀 Meet Terry the T-Rex! 🎀<br/>
+  </div>
+  
+  <p style="color: #ad1457; font-size: 1.3em; margin: 20px 0;">
+    🌟surprise!🌟
+  </p>
+  
+  <button id="backFromTrexBtn">← Back to Results</button>
+</div>
+
+<script>
+  const startBtn = document.getElementById('startBtn');
+  const card = document.getElementById('card');
+  const nextBtn = document.getElementById('nextBtn');
+  const quiz = document.getElementById('quiz');
+  const result = document.getElementById('result');
+  const bajaBlast = document.getElementById('bajaBlast');
+  const rating = document.getElementById('rating');
+  const trexPage = document.getElementById('trexPage');
+  const questionEl = document.getElementById('question');
+  const answersEl = document.getElementById('answers');
+  const scoreText = document.getElementById('scoreText');
+  const restartBtn = document.getElementById('restartBtn');
+  const bajaBtn = document.getElementById('bajaBtn');
+  const ratingBtn = document.getElementById('ratingBtn');
+  const trexBtn = document.getElementById('trexBtn');
+  const backBtn = document.getElementById('backBtn');
+  const backToResultBtn = document.getElementById('backToResultBtn');
+  const backFromTrexBtn = document.getElementById('backFromTrexBtn');
+  const cakeImage = document.getElementById('cakeImage');
+  const cakeSurprise = document.getElementById('cakeSurprise');
+  const cakeMessage = document.getElementById('cakeMessage');
+  const timerScore = document.getElementById('timerScore');
+  const timerEl = document.getElementById('timer');
+  const liveScoreEl = document.getElementById('liveScore');
+  const starRating = document.getElementById('starRating');
+  const ratingMessage = document.getElementById('ratingMessage');
+  const sparkles = document.getElementById('sparkles');
+
+  const questions = [
+    { q: "Which sea creature is a mammal?", options: ["Dolphin", "Starfish", "Jellyfish", "Crab"], answer: "Dolphin" },
+    { q: "What color is Hello Kitty's bow?", options: ["Red", "Pink", "Blue", "Yellow"], answer: "Red" },
+    { q: "Which marine animal can change color?", options: ["Octopus", "Shark", "Dolphin", "Whale"], answer: "Octopus" },
+    { q: "Which creature glows in the dark?", options: ["Jellyfish", "Crab", "Sea turtle", "Starfish"], answer: "Jellyfish" },
+    { q: "Which is NOT a real sea creature?", options: ["Sea Bunny", "Leafy Sea Dragon", "Ocean Unicorn", "Sea Cucumber"], answer: "Ocean Unicorn" },
+    { q: "Which Hello Kitty character is her twin?", options: ["Mimmy", "Dear Daniel", "Badtz-Maru", "My Melody"], answer: "Mimmy" },
+    { q: "What creature has eight arms?", options: ["Octopus", "Starfish", "Squid", "Crab"], answer: "Octopus" },
+    { q: "Which animal is called the 'sea cow'?", options: ["Manatee", "Dolphin", "Seal", "Otter"], answer: "Manatee" },
+    { q: "Which marine animal has a shell?", options: ["Sea turtle", "Shark", "Octopus", "Jellyfish"], answer: "Sea turtle" },
+    { q: "Which creature is a crustacean?", options: ["Crab", "Whale", "Shark", "Sea cucumber"], answer: "Crab" }
+
+  ];
+
+  let current = 0, score = 0, seconds = 0, timerInterval;
+
+  // Shuffle function
+  function shuffle(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  startBtn.onclick = () => {
+    startBtn.style.display = 'none';
+    document.querySelector('.hello-kitty').style.display = 'none';
+    card.style.display = 'block';
+  };
+
+  nextBtn.onclick = () => {
+    card.style.display = 'none';
+    quiz.style.display = 'block';
+    startQuiz();
+  };
+
+  restartBtn.onclick = () => {
+    result.style.display = 'none';
+    bajaBlast.style.display = 'none';
+    rating.style.display = 'none';
+    trexPage.style.display = 'none';
+    startQuiz();
+  };
+
+  bajaBtn.onclick = () => {
+    result.style.display = 'none';
+    bajaBlast.style.display = 'block';
+  };
+
+  ratingBtn.onclick = () => {
+    result.style.display = 'none';
+    rating.style.display = 'block';
+  };
+
+  trexBtn.onclick = () => {
+    result.style.display = 'none';
+    trexPage.style.display = 'block';
+    startSparkles();
+  };
+
+  backBtn.onclick = () => {
+    bajaBlast.style.display = 'none';
+    result.style.display = 'block';
+  };
+
+  backToResultBtn.onclick = () => {
+    rating.style.display = 'none';
+    result.style.display = 'block';
+  };
+
+  backFromTrexBtn.onclick = () => {
+    trexPage.style.display = 'none';
+    result.style.display = 'block';
+  };
+
+  cakeImage.onclick = () => {
+    cakeMessage.style.display = 'block';
+  };
+
+  // Sparkles for T-Rex page
+  function startSparkles() {
+    sparkles.innerHTML = '';
+    const sparkleSymbols = ['✨', '💖', '🎀', '💕', '⭐', '🌟'];
+    
+    for (let i = 0; i < 20; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.textContent = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.animationDelay = `${Math.random() * 4}s`;
+      sparkle.style.animationDuration = `${3 + Math.random() * 2}s`;
+      sparkles.appendChild(sparkle);
+    }
+  }
+
+  // Rating system
+  const stars = document.querySelectorAll('.star');
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const rating = parseInt(star.dataset.rating);
+      updateStars(rating);
+      showRatingMessage(rating);
+    });
+
+    star.addEventListener('mouseover', () => {
+      const rating = parseInt(star.dataset.rating);
+      updateStars(rating);
+    });
+  });
+
+  starRating.addEventListener('mouseleave', () => {
+    const activeRating = document.querySelector('.star.clicked');
+    if (activeRating) {
+      updateStars(parseInt(activeRating.dataset.rating));
+    } else {
+      updateStars(0);
+    }
+  });
+
+  function updateStars(rating) {
+    stars.forEach((star, index) => {
+      if (index < rating) {
+        star.classList.add('active');
+      } else {
+        star.classList.remove('active');
+      }
+    });
+  }
+
+  function showRatingMessage(rating) {
+    stars.forEach(star => star.classList.remove('clicked'));
+    stars[rating - 1].classList.add('clicked');
+    
+    const messages = {
+      1: "So, you hate me.",
+      2: "Wow, Rude",
+      3: "Room for improvementh.",
+      4: "Glad you enjoyed it!",
+      5: "You're the best, Tessa! Thanks for playing!"
+    };
+    
+    ratingMessage.textContent = messages[rating];
+    ratingMessage.style.display = 'block';
+  }
+
+  function startQuiz() {
+    score = 0;
+    current = 0;
+    seconds = 0;
+    cakeSurprise.style.display = 'none';
+    cakeMessage.style.display = 'none';
+    quiz.style.display = 'block';
+    result.style.display = 'none';
+    timerScore.style.display = 'block';
+    liveScoreEl.textContent = score;
+    timerEl.textContent = seconds;
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      seconds++;
+      timerEl.textContent = seconds;
+    }, 1000);
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const q = questions[current];
+    questionEl.textContent = q.q;
+    answersEl.innerHTML = "";
+    
+    // Shuffle the answer options
+    const shuffledOptions = shuffle(q.options);
+    
+    shuffledOptions.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.textContent = opt;
+      btn.onclick = () => {
+        disableButtons();
+        if (opt === q.answer) {
+          btn.style.backgroundColor = 'lightgreen';
+          score++;
+        } else {
+          btn.style.backgroundColor = 'salmon';
+        }
+        liveScoreEl.textContent = score;
+        setTimeout(() => {
+          current++;
+          if (current < questions.length) {
+            showQuestion();
+          } else {
+            showResult();
+          }
+        }, 700);
+      };
+      answersEl.appendChild(btn);
+    });
+  }
+
+  function disableButtons() {
+    answersEl.querySelectorAll('button').forEach(b => b.disabled = true);
+  }
+
+  function showResult() {
+    quiz.style.display = 'none';
+    result.style.display = 'block';
+    scoreText.textContent = `You got ${score} out of ${questions.length} correct in ${seconds}s! 🎉`;
+    clearInterval(timerInterval);
+    startConfetti();
+    if (score === questions.length) {
+      cakeSurprise.style.display = 'flex';
+    }
+  }
+
+  // Pink confetti setup
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  const confetti = [];
+  for (let i = 0; i < 150; i++) {
+    confetti.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 6 + 2,
+      d: Math.random() * 50,
+      color: `hsl(${320 + Math.random() * 40}, 100%, ${70 + Math.random() * 20}%)`,
+      tilt: Math.random() * 10 - 10,
+      tiltAngle: 0
+    });
+  }
+
+  function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let c of confetti) {
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = c.color;
+      ctx.moveTo(c.x + c.tilt + c.r / 2, c.y);
+      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 2);
+      ctx.stroke();
+    }
+    updateConfetti();
+  }
+
+  function updateConfetti() {
+    for (let c of confetti) {
+      c.y += Math.cos(c.d) + 1 + c.r / 2;
+      c.x += Math.sin(c.d);
+      c.tiltAngle += 0.1;
+      c.tilt = Math.sin(c.tiltAngle) * 15;
+      if (c.y > canvas.height) {
+        c.y = -10;
+        c.x = Math.random() * canvas.width;
+      }
+    }
+  }
+
+  function startConfetti() {
+    setInterval(drawConfetti, 20);
+  }
+
+  // Floating emojis
+  const emojiList = ["🐬", "🐠", "🐙", "🦑", "🐳", "🦀", "🐢", "🪼", "🌊"];
+  const emojiContainer = document.getElementById('emojiDecor');
+  for (let i = 0; i < 30; i++) {
+    const e = document.createElement('div');
+    e.classList.add('emoji');
+    e.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+    e.style.left = `${Math.random() * 100}%`;
+    e.style.top = `${Math.random() * 100}%`;
+    e.style.animationDuration = `${6 + Math.random() * 6}s`;
+    e.style.fontSize = `${1.5 + Math.random() * 1.5}rem`;
+    emojiContainer.appendChild(e);
+  }
+</script>
+</body>
+</html>
