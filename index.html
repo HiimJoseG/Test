@@ -16,7 +16,7 @@
       flex-direction: column;
     }
 
-    #card, #quiz, #result, #bajaBlast, #rating, #trexPage {
+    #card, #quiz, #result, #bajaBlast, #rating, #trexPage, #mainMenu, #timeline, #moments, #convos, #gaming, #media, #jokes, #stats, #future {
       display: none;
       background: rgba(255, 255, 255, 0.95);
       padding: 20px 30px;
@@ -27,7 +27,16 @@
       z-index: 1;
     }
 
-    #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn {
+    #mainMenu {
+      max-width: 500px;
+    }
+
+    #timeline, #moments, #convos, #gaming, #media, #jokes, #stats, #future {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn, #mainMenuBtn, .back-to-menu {
       padding: 12px 25px;
       background: #ff69b4;
       color: white;
@@ -54,7 +63,12 @@
       animation: bounce 2s infinite;
     }
 
-    #backBtn, #backToResultBtn, #backFromTrexBtn {
+    #mainMenuBtn {
+      background: linear-gradient(45deg, #9c27b0, #e91e63);
+      margin-left: 10px;
+    }
+
+    #backBtn, #backToResultBtn, #backFromTrexBtn, .back-to-menu {
       background: #6c757d;
     }
 
@@ -257,6 +271,130 @@
         opacity: 0;
       }
     }
+
+    /* Main Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .menu-btn {
+      background: #ffd6ec;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+      background: #ffb3d9;
+    }
+
+    .menu-icon {
+      font-size: 2em;
+    }
+
+    .menu-title {
+      font-weight: bold;
+      color: #d63384;
+    }
+
+    /* Content sections styling */
+    .content-card {
+      background: #fff0fa;
+      border: 2px dashed #ff69b4;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .content-card h3 {
+      color: #d63384;
+      margin-top: 0;
+    }
+
+    .timeline-item {
+      background: #fff0fa;
+      border-left: 4px solid #ff69b4;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .timeline-item h3 {
+      color: #d63384;
+      margin-top: 0;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .media-item {
+      background: #fff0fa;
+      border: 2px solid #ffd6ec;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .media-placeholder {
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(135deg, #ffe6f2, #ffd6ec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d63384;
+      font-size: 2em;
+    }
+
+    .media-caption {
+      padding: 10px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .stat-card {
+      background: #ffd6ec;
+      border: 2px solid #ff69b4;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2em;
+      font-weight: bold;
+      color: #d63384;
+    }
+
+    .stat-label {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -269,13 +407,13 @@
 </div>
 
 <button id="startBtn">🎁 Click to Open, Tessa!</button>
-<img class="hello-kitty" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWV4YnJ4d2txc3BqY3RoOWQ5N3FwODIyZjY2dXcyNWUxd3BlNzhscyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wNJBF6U6VZWmLny/giphy.gif" alt="Hello Kitty GIFF" />
+<img class="hello-kitty" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWV4YnJ4d2txc3BqY3RoOWQ5N3FwODIyZjY2dXcyNWUxd3BlNzhscyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wNJBF6U6VZWmLny/giphy.gif" alt="Hello Kitty GIF" />
 
 <div id="card">
- <img id="trex-result" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
        alt="T-Rex GIF" 
        style="width: 120px; margin-bottom: 10px;" />
-  <img class="hello-kitty" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExanpydzNnMmFqYzYzMWhqd2Nkcm1lNnd0MGF4eml5MG1iZzNzdHAzbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZqbBT64ECtjy/giphy.gif" alt="Hello Kitty GIF" />
+  <img class="hello-kitty" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExanpydzNnMmFqYzYzMWhqd2Nkcm1lNnd0MGF4eml5MG1iZzNzdHAzbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZqbBT64ECtjy/giphy.gif" alt="Hello Kitty GIF" />
   <h1>🎉 Happy 16th Birthday, Tess! 🐚</h1>
   <p>You're awesome, great to talk to, super funny, and you're all around amazing (I think so). Hope you get better at fort. Keep being you! 💖</p>
   <div id="messageBox">
@@ -288,7 +426,7 @@
 </div>
 
 <div id="quiz">
-   <img id="trex-result" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
        alt="T-Rex Quiz" 
        style="width: 100px; margin: 0 auto 10px; display: block;" />
   <div class="question" id="question">Loading...</div>
@@ -297,12 +435,12 @@
 
 <div id="result">
   <h2>🎊 You did it! 🎊</h2>
-  <img id="trex-result" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
        alt="T-Rex Result" 
        style="width: 100px; margin-bottom: 10px;" />
   <p id="scoreText"></p>
   <div id="cakeSurprise" style="display:none; flex-direction: column; align-items: center; margin-top: 20px;">
-    <img id="cakeImage" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm54eDR0dnVrbzZmOHNnOGpxMnR1c2dlcnkwODljN2xnZjNzNXM5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11USZ5ilAUYRMI/giphy.gif" alt="Pink Cake GIF" style="width: 150px; cursor: pointer; animation: bounce 1.2s infinite;" />
+    <img id="cakeImage" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm54eDR0dnVrbzZmOHNnOGpxMnR1c2dlcnkwODljN2xnZjNzNXM5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11USZ5ilAUYRMI/giphy.gif" alt="Pink Cake GIF" style="width: 150px; cursor: pointer; animation: bounce 1.2s infinite;" />
     <p style="color: #d63384; font-weight: bold;">🎂 Click the cake! 🎂</p>
   </div>
   <div id="cakeMessage" style="display:none; background: #fff0f9; border: 2px dashed #ff69b4; padding: 15px 25px; border-radius: 12px; font-size: 1.1em; margin-top: 15px; max-width: 400px; text-align: center;">
@@ -313,7 +451,252 @@
     <button id="bajaBtn">🥤 Baja Blast Time!</button>
     <button id="ratingBtn">⭐ Rate This Quiz!</button>
     <button id="trexBtn">🦕 T-Rex Surprise!</button>
+    <button id="mainMenuBtn">📋 Explore More!</button>
   </div>
+</div>
+
+<!-- Main Menu -->
+<div id="mainMenu">
+  <h2 style="color: #d63384;">🌟 Our Friendship Journey 🌟</h2>
+  <p style="color: #666; margin-bottom: 15px;">Choose what you want to explore!</p>
+  
+  <div class="menu-grid">
+    <button class="menu-btn" id="timelineBtn">
+      <span class="menu-icon">📅</span>
+      <span class="menu-title">Monthly Timeline</span>
+    </button>
+    
+    <button class="menu-btn" id="momentsBtn">
+      <span class="menu-icon">😂</span>
+      <span class="menu-title">Epic Moments</span>
+    </button>
+    
+    <button class="menu-btn" id="convosBtn">
+      <span class="menu-icon">💬</span>
+      <span class="menu-title">Deep Talks</span>
+    </button>
+    
+    <button class="menu-btn" id="gamingBtn">
+      <span class="menu-icon">🎮</span>
+      <span class="menu-title">Gaming Sessions</span>
+    </button>
+    
+    <button class="menu-btn" id="mediaBtn">
+      <span class="menu-icon">📸</span>
+      <span class="menu-title">Photos & Videos</span>
+    </button>
+    
+    <button class="menu-btn" id="jokesBtn">
+      <span class="menu-icon">🤪</span>
+      <span class="menu-title">Inside Jokes</span>
+    </button>
+    
+    <button class="menu-btn" id="statsBtn">
+      <span class="menu-icon">📊</span>
+      <span class="menu-title">Friendship Stats</span>
+    </button>
+    
+    <button class="menu-btn" id="futureBtn">
+      <span class="menu-icon">🚀</span>
+      <span class="menu-title">Future Plans</span>
+    </button>
+  </div>
+  
+  <button id="backToResultBtn">← Back to Quiz Results</button>
+</div>
+
+<!-- Monthly Timeline -->
+<div id="timeline">
+  <h2 style="color: #d63384;">📅 Monthly Timeline</h2>
+  
+  <div class="timeline-item">
+    <h3>🍂 September</h3>
+    <p>Add your September memories here...</p>
+  </div>
+  
+  <div class="timeline-item">
+    <h3>🎃 October</h3>
+    <p>Add your October memories here...</p>
+  </div>
+  
+  <div class="timeline-item">
+    <h3>🍁 November</h3>
+    <p>Add your November memories here...</p>
+  </div>
+  
+  <div class="timeline-item">
+    <h3>❄️ December</h3>
+    <p>Add your December memories here...</p>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
+</div>
+
+<!-- Epic Moments -->
+<div id="moments">
+  <h2 style="color: #d63384;">😂 Epic Moments</h2>
+  
+  <div class="content-card">
+    <h3>🎭 The Funniest Moment</h3>
+    <p>Remember when [describe the funniest thing]...</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>🤦 Most Embarrassing</h3>
+    <p>[Add an embarrassing but funny moment]</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>🎉 Most Random</h3>
+    <p>[That completely random thing]</p>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
+</div>
+
+<!-- Deep Conversations -->
+<div id="convos">
+  <h2 style="color: #d63384;">💬 Deep Talks</h2>
+  
+  <div class="content-card">
+    <h3>🌟 That One Serious Talk</h3>
+    <p>When we talked about [topic]...</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>💭 Late Night Philosophy</h3>
+    <p>[Those 2am conversations]</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>❤️ Appreciation Moment</h3>
+    <p>That time you helped me with [situation]...</p>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
+</div>
+
+<!-- Gaming Sessions -->
+<div id="gaming">
+  <h2 style="color: #d63384;">🎮 Gaming Sessions</h2>
+  
+  <div class="content-card">
+    <h3>🏆 Epic Victory</h3>
+    <p>That time we actually won in Fortnite!</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>💀 Epic Fail</h3>
+    <p>[That embarrassing loss]</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>📈 Progress Report</h3>
+    <p>You've gotten so much better! Keep grinding twin 💪</p>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
+</div>
+
+<!-- Photos & Videos -->
+<div id="media">
+  <h2 style="color: #d63384;">📸 Photos & Videos</h2>
+  
+  <div class="media-grid">
+    <div class="media-item">
+      <div class="media-placeholder">📷</div>
+      <p class="media-caption">Add photo URL here</p>
+    </div>
+    
+    <div class="media-item">
+      <div class="media-placeholder">🎥</div>
+      <p class="media-caption">Add video embed here</p>
+    </div>
+    
+    <div class="media-item">
+      <div class="media-placeholder">📷</div>
+      <p class="media-caption">Another memory</p>
+    </div>
+    
+    <div class="media-item">
+      <div class="media-placeholder">📷</div>
+      <p class="media-caption">More memories</p>
+    </div>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
+</div>
+
+<!-- Inside Jokes -->
+<div id="jokes">
+  <h2 style="color: #d63384;">🤪 Inside Jokes Dictionary</h2>
+  
+  <div class="content-card">
+    <h3>📖 [Joke/Phrase #1]</h3>
+    <p><strong>Origin:</strong> [How it started]</p>
+    <p><strong>Meaning:</strong> [What it means]</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>📖 [Joke/Phrase #2]</h3>
+    <p><strong>Origin:</strong> [Story behind it]</p>
+    <p><strong>Meaning:</strong> [Context]</p>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
+</div>
+
+<!-- Friendship Stats -->
+<div id="stats">
+  <h2 style="color: #d63384;">📊 Friendship Stats</h2>
+  
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">XXX</div>
+      <div class="stat-label">Total Conversations</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-number">XX</div>
+      <div class="stat-label">Inside Jokes</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-number">XX</div>
+      <div class="stat-label">Gaming Sessions</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-number">XX</div>
+      <div class="stat-label">Fortnite Talks</div>
+    </div>
+  </div>
+  
+  <div class="content-card" style="margin-top: 20px;">
+    <h3>🏆 Notable Achievements</h3>
+    <p>✅ Went from "person I might hate" to actual friend</p>
+    <p>✅ [Add another achievement]</p>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
+</div>
+
+<!-- Future Plans -->
+<div id="future">
+  <h2 style="color: #d63384;">🚀 Future Plans</h2>
+  
+  <div class="content-card">
+    <h3>🎯 Short Term Goals</h3>
+    <p>• Keep grinding in Fortnite</p>
+    <p>• Ace that test on Friday!</p>
+  </div>
+  
+  <div class="content-card">
+    <h3>✨ Final Thoughts</h3>
+    <p>Keep being awesome, Tess. Here's to more friendship moments ahead! 🌊💙</p>
+  </div>
+  
+  <button class="back-to-menu">← Back to Menu</button>
 </div>
 
 <!-- Baja Blast section -->
@@ -340,7 +723,7 @@
   
   <div class="rating-message" id="ratingMessage"></div>
   
-  <button id="backToResultBtn">← Back to Results</button>
+  <button id="backBtn2">← Back to Results</button>
 </div>
 
 <!-- T-Rex in Pink Tutu Full Page -->
@@ -369,6 +752,15 @@
   const bajaBlast = document.getElementById('bajaBlast');
   const rating = document.getElementById('rating');
   const trexPage = document.getElementById('trexPage');
+  const mainMenu = document.getElementById('mainMenu');
+  const timeline = document.getElementById('timeline');
+  const moments = document.getElementById('moments');
+  const convos = document.getElementById('convos');
+  const gaming = document.getElementById('gaming');
+  const media = document.getElementById('media');
+  const jokes = document.getElementById('jokes');
+  const stats = document.getElementById('stats');
+  const future = document.getElementById('future');
   const questionEl = document.getElementById('question');
   const answersEl = document.getElementById('answers');
   const scoreText = document.getElementById('scoreText');
@@ -376,7 +768,9 @@
   const bajaBtn = document.getElementById('bajaBtn');
   const ratingBtn = document.getElementById('ratingBtn');
   const trexBtn = document.getElementById('trexBtn');
+  const mainMenuBtn = document.getElementById('mainMenuBtn');
   const backBtn = document.getElementById('backBtn');
+  const backBtn2 = document.getElementById('backBtn2');
   const backToResultBtn = document.getElementById('backToResultBtn');
   const backFromTrexBtn = document.getElementById('backFromTrexBtn');
   const cakeImage = document.getElementById('cakeImage');
@@ -400,7 +794,6 @@
     { q: "Which animal is called the 'sea cow'?", options: ["Manatee", "Dolphin", "Seal", "Otter"], answer: "Manatee" },
     { q: "Which marine animal has a shell?", options: ["Sea turtle", "Shark", "Octopus", "Jellyfish"], answer: "Sea turtle" },
     { q: "Which creature is a crustacean?", options: ["Crab", "Whale", "Shark", "Sea cucumber"], answer: "Crab" }
-
   ];
 
   let current = 0, score = 0, seconds = 0, timerInterval;
@@ -432,6 +825,15 @@
     bajaBlast.style.display = 'none';
     rating.style.display = 'none';
     trexPage.style.display = 'none';
+    mainMenu.style.display = 'none';
+    timeline.style.display = 'none';
+    moments.style.display = 'none';
+    convos.style.display = 'none';
+    gaming.style.display = 'none';
+    media.style.display = 'none';
+    jokes.style.display = 'none';
+    stats.style.display = 'none';
+    future.style.display = 'none';
     startQuiz();
   };
 
@@ -451,13 +853,23 @@
     startSparkles();
   };
 
+  mainMenuBtn.onclick = () => {
+    result.style.display = 'none';
+    mainMenu.style.display = 'block';
+  };
+
   backBtn.onclick = () => {
     bajaBlast.style.display = 'none';
     result.style.display = 'block';
   };
 
-  backToResultBtn.onclick = () => {
+  backBtn2.onclick = () => {
     rating.style.display = 'none';
+    result.style.display = 'block';
+  };
+
+  backToResultBtn.onclick = () => {
+    mainMenu.style.display = 'none';
     result.style.display = 'block';
   };
 
@@ -469,6 +881,62 @@
   cakeImage.onclick = () => {
     cakeMessage.style.display = 'block';
   };
+
+  // Menu navigation
+  document.getElementById('timelineBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    timeline.style.display = 'block';
+  };
+
+  document.getElementById('momentsBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    moments.style.display = 'block';
+  };
+
+  document.getElementById('convosBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    convos.style.display = 'block';
+  };
+
+  document.getElementById('gamingBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    gaming.style.display = 'block';
+  };
+
+  document.getElementById('mediaBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    media.style.display = 'block';
+  };
+
+  document.getElementById('jokesBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    jokes.style.display = 'block';
+  };
+
+  document.getElementById('statsBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    stats.style.display = 'block';
+  };
+
+  document.getElementById('futureBtn').onclick = () => {
+    mainMenu.style.display = 'none';
+    future.style.display = 'block';
+  };
+
+  // Back to menu buttons
+  document.querySelectorAll('.back-to-menu').forEach(btn => {
+    btn.onclick = () => {
+      timeline.style.display = 'none';
+      moments.style.display = 'none';
+      convos.style.display = 'none';
+      gaming.style.display = 'none';
+      media.style.display = 'none';
+      jokes.style.display = 'none';
+      stats.style.display = 'none';
+      future.style.display = 'none';
+      mainMenu.style.display = 'block';
+    };
+  });
 
   // Sparkles for T-Rex page
   function startSparkles() {
