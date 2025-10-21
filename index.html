@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy Birthday Tessa!</title>
+  <title>Happy Spooky Birthday Tessa! 🎃</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Comic Sans MS', cursive;
-      background: linear-gradient(to bottom, #ffe6f2, #a0e9ff);
+      font-family: 'Creepster', 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom, #1a0933, #2d1b4e, #ff6b35);
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -18,13 +18,15 @@
 
     #card, #quiz, #result, #bajaBlast, #rating, #trexPage, #mainMenu, #timeline, #moments, #convos, #gaming, #media, #jokes, #stats, #future {
       display: none;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(26, 9, 51, 0.95);
       padding: 20px 30px;
       border-radius: 15px;
-      box-shadow: 0 0 10px #ff69b4;
+      box-shadow: 0 0 20px #ff6b35, 0 0 40px rgba(255, 107, 53, 0.3);
       text-align: center;
       max-width: 420px;
       z-index: 1;
+      border: 2px solid #ff6b35;
+      color: #fff;
     }
 
     #mainMenu {
@@ -38,47 +40,62 @@
 
     #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn, #mainMenuBtn, .back-to-menu {
       padding: 12px 25px;
-      background: #ff69b4;
+      background: linear-gradient(45deg, #ff6b35, #ff8c42);
       color: white;
       border: none;
       border-radius: 8px;
       font-size: 1em;
       cursor: pointer;
       margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    #startBtn:hover, #nextBtn:hover, #restartBtn:hover, .back-to-menu:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
     }
 
     #bajaBtn {
-      background: linear-gradient(45deg, #00bcd4, #4fc3f7);
+      background: linear-gradient(45deg, #8b4513, #d2691e);
       margin-left: 10px;
     }
 
     #ratingBtn {
-      background: linear-gradient(45deg, #ffd700, #ffb300);
+      background: linear-gradient(45deg, #9370db, #8a2be2);
       margin-left: 10px;
     }
 
     #trexBtn {
-      background: linear-gradient(45deg, #e91e63, #f06292);
+      background: linear-gradient(45deg, #228b22, #32cd32);
       margin-left: 10px;
       animation: bounce 2s infinite;
     }
 
     #mainMenuBtn {
-      background: linear-gradient(45deg, #9c27b0, #e91e63);
+      background: linear-gradient(45deg, #ff4500, #ff6347);
       margin-left: 10px;
     }
 
     #backBtn, #backToResultBtn, #backFromTrexBtn, .back-to-menu {
-      background: #6c757d;
+      background: #4a2c4a;
     }
 
     h1 {
-      color: #d63384;
+      color: #ff6b35;
+      text-shadow: 2px 2px 4px #000, 0 0 10px #ff6b35;
+    }
+
+    h2 {
+      color: #ff8c42;
+      text-shadow: 1px 1px 3px #000;
     }
 
     .hello-kitty {
       width: 120px;
       margin-bottom: 10px;
+      filter: hue-rotate(20deg) saturate(1.2);
     }
 
     .emoji-decor {
@@ -110,37 +127,47 @@
     .question {
       margin: 20px 0;
       font-size: 1.2em;
+      color: #ffa500;
     }
 
     .answers button {
       display: block;
       margin: 10px auto;
       padding: 10px 20px;
-      background: #ffd6ec;
-      border: 2px solid #ff69b4;
+      background: #2d1b4e;
+      border: 2px solid #ff6b35;
       border-radius: 8px;
       cursor: pointer;
       font-size: 1em;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .answers button:hover {
+      background: #3d2b5e;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff6b35;
     }
 
     #messageBox {
-      background: #fff0fa;
-      border: 2px dashed #ff69b4;
+      background: rgba(45, 27, 78, 0.7);
+      border: 2px dashed #ff6b35;
       padding: 10px;
       border-radius: 10px;
       margin-top: 15px;
       font-size: 1em;
-      color: #333;
+      color: #ffa500;
     }
 
     #timerScore {
       position: absolute;
       top: 15px;
       right: 20px;
-      color: #d63384;
+      color: #ff6b35;
       font-size: 1.1em;
       font-weight: bold;
       z-index: 2;
+      text-shadow: 1px 1px 3px #000;
     }
 
     @keyframes bounce {
@@ -163,18 +190,18 @@
     }
 
     #bajaBlast {
-      background: linear-gradient(135deg, #e3f2fd, #b3e5fc);
-      border: 3px solid #00bcd4;
+      background: linear-gradient(135deg, #2d1b4e, #4a2c4a);
+      border: 3px solid #d2691e;
     }
 
     #rating {
-      background: linear-gradient(135deg, #fff8e1, #ffecb3);
-      border: 3px solid #ffd700;
+      background: linear-gradient(135deg, #2d1b4e, #3d2b5e);
+      border: 3px solid #9370db;
     }
 
     #trexPage {
-      background: linear-gradient(135deg, #fce4ec, #f8bbd9);
-      border: 3px solid #e91e63;
+      background: linear-gradient(135deg, #1a4d2e, #2d5f3d);
+      border: 3px solid #32cd32;
       max-width: 90vw;
       max-height: 90vh;
       padding: 30px;
@@ -191,23 +218,24 @@
     .star {
       font-size: 2.5rem;
       cursor: pointer;
-      color: #ddd;
+      color: #4a2c4a;
       transition: color 0.2s;
     }
 
     .star:hover,
     .star.active {
-      color: #ffd700;
+      color: #9370db;
+      text-shadow: 0 0 10px #9370db;
     }
 
     .rating-message {
-      background: #fff9c4;
-      border: 2px dashed #ffd700;
+      background: rgba(147, 112, 219, 0.2);
+      border: 2px dashed #9370db;
       padding: 15px;
       border-radius: 10px;
       margin-top: 15px;
       font-size: 1.1em;
-      color: #333;
+      color: #ffa500;
       display: none;
     }
 
@@ -224,7 +252,7 @@
       max-width: 600px;
       height: auto;
       border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(233, 30, 99, 0.3);
+      box-shadow: 0 8px 16px rgba(50, 205, 50, 0.3);
       margin: 20px 0;
       animation: wiggle 3s ease-in-out infinite;
     }
@@ -236,13 +264,13 @@
     }
 
     .trex-message {
-      background: #fff0f5;
-      border: 3px dashed #e91e63;
+      background: rgba(50, 205, 50, 0.2);
+      border: 3px dashed #32cd32;
       padding: 20px;
       border-radius: 15px;
       margin: 20px 0;
       font-size: 1.2em;
-      color: #880e4f;
+      color: #90ee90;
       font-weight: bold;
     }
 
@@ -256,7 +284,7 @@
 
     .sparkle {
       position: absolute;
-      color: #ff69b4;
+      color: #32cd32;
       font-size: 1.5rem;
       animation: sparkleFloat 4s linear infinite;
     }
@@ -272,7 +300,6 @@
       }
     }
 
-    /* Main Menu Grid */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -281,8 +308,8 @@
     }
 
     .menu-btn {
-      background: #ffd6ec;
-      border: 2px solid #ff69b4;
+      background: #2d1b4e;
+      border: 2px solid #ff6b35;
       border-radius: 8px;
       padding: 15px;
       cursor: pointer;
@@ -292,12 +319,13 @@
       flex-direction: column;
       align-items: center;
       gap: 5px;
+      color: #ffa500;
     }
 
     .menu-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
-      background: #ffb3d9;
+      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.5);
+      background: #3d2b5e;
     }
 
     .menu-icon {
@@ -306,13 +334,12 @@
 
     .menu-title {
       font-weight: bold;
-      color: #d63384;
+      color: #ff8c42;
     }
 
-    /* Content sections styling */
     .content-card {
-      background: #fff0fa;
-      border: 2px dashed #ff69b4;
+      background: rgba(45, 27, 78, 0.6);
+      border: 2px dashed #ff6b35;
       padding: 15px;
       border-radius: 10px;
       margin: 15px 0;
@@ -320,13 +347,13 @@
     }
 
     .content-card h3 {
-      color: #d63384;
+      color: #ff8c42;
       margin-top: 0;
     }
 
     .timeline-item {
-      background: #fff0fa;
-      border-left: 4px solid #ff69b4;
+      background: rgba(45, 27, 78, 0.6);
+      border-left: 4px solid #ff6b35;
       padding: 15px;
       border-radius: 8px;
       margin: 15px 0;
@@ -334,7 +361,7 @@
     }
 
     .timeline-item h3 {
-      color: #d63384;
+      color: #ff8c42;
       margin-top: 0;
     }
 
@@ -346,8 +373,8 @@
     }
 
     .media-item {
-      background: #fff0fa;
-      border: 2px solid #ffd6ec;
+      background: rgba(45, 27, 78, 0.6);
+      border: 2px solid #ff6b35;
       border-radius: 10px;
       overflow: hidden;
     }
@@ -355,18 +382,18 @@
     .media-placeholder {
       width: 100%;
       height: 150px;
-      background: linear-gradient(135deg, #ffe6f2, #ffd6ec);
+      background: linear-gradient(135deg, #2d1b4e, #4a2c4a);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #d63384;
+      color: #ff6b35;
       font-size: 2em;
     }
 
     .media-caption {
       padding: 10px;
       font-size: 0.9em;
-      color: #555;
+      color: #ffa500;
     }
 
     .stat-grid {
@@ -377,8 +404,8 @@
     }
 
     .stat-card {
-      background: #ffd6ec;
-      border: 2px solid #ff69b4;
+      background: #2d1b4e;
+      border: 2px solid #ff6b35;
       border-radius: 10px;
       padding: 20px;
       text-align: center;
@@ -387,12 +414,12 @@
     .stat-number {
       font-size: 2em;
       font-weight: bold;
-      color: #d63384;
+      color: #ff8c42;
     }
 
     .stat-label {
       font-size: 0.9em;
-      color: #666;
+      color: #ffa500;
       margin-top: 5px;
     }
   </style>
@@ -406,7 +433,7 @@
   Time: <span id="timer">0</span>s  Score: <span id="liveScore">0</span>/10
 </div>
 
-<button id="startBtn">🎁 Click to Open, Tessa!</button>
+<button id="startBtn">🎃 Click to Open, Tessa! 👻</button>
 <img class="hello-kitty" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWV4YnJ4d2txc3BqY3RoOWQ5N3FwODIyZjY2dXcyNWUxd3BlNzhscyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wNJBF6U6VZWmLny/giphy.gif" alt="Hello Kitty GIF" />
 
 <div id="card">
@@ -414,15 +441,14 @@
        alt="T-Rex GIF" 
        style="width: 120px; margin-bottom: 10px;" />
   <img class="hello-kitty" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExanpydzNnMmFqYzYzMWhqd2Nkcm1lNnd0MGF4eml5MG1iZzNzdHAzbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZqbBT64ECtjy/giphy.gif" alt="Hello Kitty GIF" />
-  <h1>🎉 Happy 16th Birthday, Tess! 🐚</h1>
-  <p>You're awesome, great to talk to, super funny, and you're all around amazing (I think so). Hope you get better at fort. Keep being you! 💖</p>
+  <h1>🎃 Happy SPOOKY 16th Birthday, Tess! 👻</h1>
+  <p>You're awesome, great to talk to, super funny, and you're all around amazing (I think so). Hope you get better at fort. Keep being you! 🦇🕷️</p>
   <div id="messageBox">
-
     Hey Tessa,<br />
-    Can't belive you started out thinking I was somebody you hated, or would hate. I think I'm past that point though...Right? Hope you have a great day (and birthday) also hope you pass that test ON FRIDAYYY! May your year continue to be filled with joy, friends, and the courage to follow through with your goals. Keep  being awesome as well. Stay grinding on fortnite twin. 🌊💙<br />
+    Can't believe you started out thinking I was somebody you hated, or would hate. I think I'm past that point though...Right? Hope you have a spooky great day (and birthday) also hope you pass that test ON FRIDAYYY! May your year continue to be filled with joy, friends, and the courage to follow through with your goals. Keep being awesome as well. Stay grinding on fortnite twin. 🎃👻<br />
     — Jose
   </div>
-  <button id="nextBtn"> Woahhh Random quiz option??? 🎮</button>
+  <button id="nextBtn">🕷️ Woahhh Random Spooky Quiz??? 🦇</button>
 </div>
 
 <div id="quiz">
@@ -440,25 +466,24 @@
        style="width: 100px; margin-bottom: 10px;" />
   <p id="scoreText"></p>
   <div id="cakeSurprise" style="display:none; flex-direction: column; align-items: center; margin-top: 20px;">
-    <img id="cakeImage" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm54eDR0dnVrbzZmOHNnOGpxMnR1c2dlcnkwODljN2xnZjNzNXM5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11USZ5ilAUYRMI/giphy.gif" alt="Pink Cake GIF" style="width: 150px; cursor: pointer; animation: bounce 1.2s infinite;" />
-    <p style="color: #d63384; font-weight: bold;">🎂 Click the cake! 🎂</p>
+    <img id="cakeImage" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm54eDR0dnVrbzZmOHNnOGpxMnR1c2dlcnkwODljN2xnZjNzNXM5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11USZ5ilAUYRMI/giphy.gif" alt="Cake GIF" style="width: 150px; cursor: pointer; animation: bounce 1.2s infinite;" />
+    <p style="color: #ff8c42; font-weight: bold;">🎃 Click the cake! 🎃</p>
   </div>
-  <div id="cakeMessage" style="display:none; background: #fff0f9; border: 2px dashed #ff69b4; padding: 15px 25px; border-radius: 12px; font-size: 1.1em; margin-top: 15px; max-width: 400px; text-align: center;">
+  <div id="cakeMessage" style="display:none; background: rgba(45, 27, 78, 0.8); border: 2px dashed #ff6b35; padding: 15px 25px; border-radius: 12px; font-size: 1.1em; margin-top: 15px; max-width: 400px; text-align: center; color: #ffa500;">
     🎉 Perfect score! You got them all right, geek. — Jose 
   </div>
   <div class="button-group">
     <button id="restartBtn">🔁 Play Again</button>
-    <button id="bajaBtn">🥤 Baja Blast Time!</button>
+    <button id="bajaBtn">🍂 Pumpkin Spice Time!</button>
     <button id="ratingBtn">⭐ Rate This Quiz!</button>
-    <button id="trexBtn">🦕 T-Rex Surprise!</button>
+    <button id="trexBtn">🦖 T-Rex Surprise!</button>
     <button id="mainMenuBtn">📋 Explore More!</button>
   </div>
 </div>
 
-<!-- Main Menu -->
 <div id="mainMenu">
-  <h2 style="color: #d63384;">🌟 Our Friendship Journey 🌟</h2>
-  <p style="color: #666; margin-bottom: 15px;">Choose what you want to explore!</p>
+  <h2 style="color: #ff8c42;">🌟 Our Spooky Friendship Journey 🌟</h2>
+  <p style="color: #ffa500; margin-bottom: 15px;">Choose what you want to explore!</p>
   
   <div class="menu-grid">
     <button class="menu-btn" id="timelineBtn">
@@ -505,9 +530,8 @@
   <button id="backToResultBtn">← Back to Quiz Results</button>
 </div>
 
-<!-- Monthly Timeline -->
 <div id="timeline">
-  <h2 style="color: #d63384;">📅 Monthly Timeline</h2>
+  <h2 style="color: #ff8c42;">📅 Monthly Timeline</h2>
   
   <div class="timeline-item">
     <h3>🍂 September</h3>
@@ -532,9 +556,8 @@
   <button class="back-to-menu">← Back to Menu</button>
 </div>
 
-<!-- Epic Moments -->
 <div id="moments">
-  <h2 style="color: #d63384;">😂 Epic Moments</h2>
+  <h2 style="color: #ff8c42;">😂 Epic Moments</h2>
   
   <div class="content-card">
     <h3>🎭 The Funniest Moment</h3>
@@ -550,593 +573,3 @@
     <h3>🎉 Most Random</h3>
     <p>[That completely random thing]</p>
   </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
-</div>
-
-<!-- Deep Conversations -->
-<div id="convos">
-  <h2 style="color: #d63384;">💬 Deep Talks</h2>
-  
-  <div class="content-card">
-    <h3>🌟 That One Serious Talk</h3>
-    <p>When we talked about [topic]...</p>
-  </div>
-  
-  <div class="content-card">
-    <h3>💭 Late Night Philosophy</h3>
-    <p>[Those 2am conversations]</p>
-  </div>
-  
-  <div class="content-card">
-    <h3>❤️ Appreciation Moment</h3>
-    <p>That time you helped me with [situation]...</p>
-  </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
-</div>
-
-<!-- Gaming Sessions -->
-<div id="gaming">
-  <h2 style="color: #d63384;">🎮 Gaming Sessions</h2>
-  
-  <div class="content-card">
-    <h3>🏆 Epic Victory</h3>
-    <p>That time we actually won in Fortnite!</p>
-  </div>
-  
-  <div class="content-card">
-    <h3>💀 Epic Fail</h3>
-    <p>[That embarrassing loss]</p>
-  </div>
-  
-  <div class="content-card">
-    <h3>📈 Progress Report</h3>
-    <p>You've gotten so much better! Keep grinding twin 💪</p>
-  </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
-</div>
-
-<!-- Photos & Videos -->
-<div id="media">
-  <h2 style="color: #d63384;">📸 Photos & Videos</h2>
-  
-  <div class="media-grid">
-    <div class="media-item">
-      <div class="media-placeholder">📷</div>
-      <p class="media-caption">Add photo URL here</p>
-    </div>
-    
-    <div class="media-item">
-      <div class="media-placeholder">🎥</div>
-      <p class="media-caption">Add video embed here</p>
-    </div>
-    
-    <div class="media-item">
-      <div class="media-placeholder">📷</div>
-      <p class="media-caption">Another memory</p>
-    </div>
-    
-    <div class="media-item">
-      <div class="media-placeholder">📷</div>
-      <p class="media-caption">More memories</p>
-    </div>
-  </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
-</div>
-
-<!-- Inside Jokes -->
-<div id="jokes">
-  <h2 style="color: #d63384;">🤪 Inside Jokes Dictionary</h2>
-  
-  <div class="content-card">
-    <h3>📖 [Joke/Phrase #1]</h3>
-    <p><strong>Origin:</strong> [How it started]</p>
-    <p><strong>Meaning:</strong> [What it means]</p>
-  </div>
-  
-  <div class="content-card">
-    <h3>📖 [Joke/Phrase #2]</h3>
-    <p><strong>Origin:</strong> [Story behind it]</p>
-    <p><strong>Meaning:</strong> [Context]</p>
-  </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
-</div>
-
-<!-- Friendship Stats -->
-<div id="stats">
-  <h2 style="color: #d63384;">📊 Friendship Stats</h2>
-  
-  <div class="stat-grid">
-    <div class="stat-card">
-      <div class="stat-number">XXX</div>
-      <div class="stat-label">Total Conversations</div>
-    </div>
-    
-    <div class="stat-card">
-      <div class="stat-number">XX</div>
-      <div class="stat-label">Inside Jokes</div>
-    </div>
-    
-    <div class="stat-card">
-      <div class="stat-number">XX</div>
-      <div class="stat-label">Gaming Sessions</div>
-    </div>
-    
-    <div class="stat-card">
-      <div class="stat-number">XX</div>
-      <div class="stat-label">Fortnite Talks</div>
-    </div>
-  </div>
-  
-  <div class="content-card" style="margin-top: 20px;">
-    <h3>🏆 Notable Achievements</h3>
-    <p>✅ Went from "person I might hate" to actual friend</p>
-    <p>✅ [Add another achievement]</p>
-  </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
-</div>
-
-<!-- Future Plans -->
-<div id="future">
-  <h2 style="color: #d63384;">🚀 Future Plans</h2>
-  
-  <div class="content-card">
-    <h3>🎯 Short Term Goals</h3>
-    <p>• Keep grinding in Fortnite</p>
-    <p>• Ace that test on Friday!</p>
-  </div>
-  
-  <div class="content-card">
-    <h3>✨ Final Thoughts</h3>
-    <p>Keep being awesome, Tess. Here's to more friendship moments ahead! 🌊💙</p>
-  </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
-</div>
-
-<!-- Baja Blast section -->
-<div id="bajaBlast">
-  <h2 style="color: #00bcd4;">🌊 Baja Blast! 🌊</h2>
-  <img class="baja-cup" src="https://images.squarespace-cdn.com/content/v1/5026a1d184aef945913b06f9/1563589488053-N57TCKFNU4KPE97PFC6T/MTN+Dew+Baja+Blast+Zero.jpg" alt="Baja Blast Cup" />
-  <p style="color: #00695c; font-size: 1.1em;">The Best Drink! 🎉</p>
-  <p style="color: #00838f;">Baja Blast! 🏝️</p>
-  <button id="backBtn">← Back to Results</button>
-</div>
-
-<!-- Rating section -->
-<div id="rating">
-  <h2 style="color: #ff8f00;">⭐ Rate This Quiz! ⭐</h2>
-  <p style="color: #e65100;">How did you like the birthday quiz experience?</p>
-  
-  <div class="stars" id="starRating">
-    <span class="star" data-rating="1">⭐</span>
-    <span class="star" data-rating="2">⭐</span>
-    <span class="star" data-rating="3">⭐</span>
-    <span class="star" data-rating="4">⭐</span>
-    <span class="star" data-rating="5">⭐</span>
-  </div>
-  
-  <div class="rating-message" id="ratingMessage"></div>
-  
-  <button id="backBtn2">← Back to Results</button>
-</div>
-
-<!-- T-Rex in Pink Tutu Full Page -->
-<div id="trexPage">
-  <div class="sparkles" id="sparkles"></div>
-  <h1 style="color: #e91e63; font-size: 2.5em;">🦕✨ SURPRISE! ✨🦕</h1>
-  <img class="trex-fullscreen" src="https://media.craiyon.com/2025-04-27/xaYEbeUET5yJxMJYLy--jQ.webp" alt="T-Rex in Pink Tutu" />
-  
-  <div class="trex-message">
-    🎀 Meet Terry the T-Rex! 🎀<br/>
-  </div>
-  
-  <p style="color: #ad1457; font-size: 1.3em; margin: 20px 0;">
-    🌟surprise!🌟
-  </p>
-  
-  <button id="backFromTrexBtn">← Back to Results</button>
-</div>
-
-<script>
-  const startBtn = document.getElementById('startBtn');
-  const card = document.getElementById('card');
-  const nextBtn = document.getElementById('nextBtn');
-  const quiz = document.getElementById('quiz');
-  const result = document.getElementById('result');
-  const bajaBlast = document.getElementById('bajaBlast');
-  const rating = document.getElementById('rating');
-  const trexPage = document.getElementById('trexPage');
-  const mainMenu = document.getElementById('mainMenu');
-  const timeline = document.getElementById('timeline');
-  const moments = document.getElementById('moments');
-  const convos = document.getElementById('convos');
-  const gaming = document.getElementById('gaming');
-  const media = document.getElementById('media');
-  const jokes = document.getElementById('jokes');
-  const stats = document.getElementById('stats');
-  const future = document.getElementById('future');
-  const questionEl = document.getElementById('question');
-  const answersEl = document.getElementById('answers');
-  const scoreText = document.getElementById('scoreText');
-  const restartBtn = document.getElementById('restartBtn');
-  const bajaBtn = document.getElementById('bajaBtn');
-  const ratingBtn = document.getElementById('ratingBtn');
-  const trexBtn = document.getElementById('trexBtn');
-  const mainMenuBtn = document.getElementById('mainMenuBtn');
-  const backBtn = document.getElementById('backBtn');
-  const backBtn2 = document.getElementById('backBtn2');
-  const backToResultBtn = document.getElementById('backToResultBtn');
-  const backFromTrexBtn = document.getElementById('backFromTrexBtn');
-  const cakeImage = document.getElementById('cakeImage');
-  const cakeSurprise = document.getElementById('cakeSurprise');
-  const cakeMessage = document.getElementById('cakeMessage');
-  const timerScore = document.getElementById('timerScore');
-  const timerEl = document.getElementById('timer');
-  const liveScoreEl = document.getElementById('liveScore');
-  const starRating = document.getElementById('starRating');
-  const ratingMessage = document.getElementById('ratingMessage');
-  const sparkles = document.getElementById('sparkles');
-
-  const questions = [
-    { q: "Which sea creature is a mammal?", options: ["Dolphin", "Starfish", "Jellyfish", "Crab"], answer: "Dolphin" },
-    { q: "What color is Hello Kitty's bow?", options: ["Red", "Pink", "Blue", "Yellow"], answer: "Red" },
-    { q: "Which marine animal can change color?", options: ["Octopus", "Shark", "Dolphin", "Whale"], answer: "Octopus" },
-    { q: "Which creature glows in the dark?", options: ["Jellyfish", "Crab", "Sea turtle", "Starfish"], answer: "Jellyfish" },
-    { q: "Which is NOT a real sea creature?", options: ["Sea Bunny", "Leafy Sea Dragon", "Ocean Unicorn", "Sea Cucumber"], answer: "Ocean Unicorn" },
-    { q: "Which Hello Kitty character is her twin?", options: ["Mimmy", "Dear Daniel", "Badtz-Maru", "My Melody"], answer: "Mimmy" },
-    { q: "What creature has eight arms?", options: ["Octopus", "Starfish", "Squid", "Crab"], answer: "Octopus" },
-    { q: "Which animal is called the 'sea cow'?", options: ["Manatee", "Dolphin", "Seal", "Otter"], answer: "Manatee" },
-    { q: "Which marine animal has a shell?", options: ["Sea turtle", "Shark", "Octopus", "Jellyfish"], answer: "Sea turtle" },
-    { q: "Which creature is a crustacean?", options: ["Crab", "Whale", "Shark", "Sea cucumber"], answer: "Crab" }
-  ];
-
-  let current = 0, score = 0, seconds = 0, timerInterval;
-
-  // Shuffle function
-  function shuffle(array) {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled;
-  }
-
-  startBtn.onclick = () => {
-    startBtn.style.display = 'none';
-    document.querySelector('.hello-kitty').style.display = 'none';
-    card.style.display = 'block';
-  };
-
-  nextBtn.onclick = () => {
-    card.style.display = 'none';
-    quiz.style.display = 'block';
-    startQuiz();
-  };
-
-  restartBtn.onclick = () => {
-    result.style.display = 'none';
-    bajaBlast.style.display = 'none';
-    rating.style.display = 'none';
-    trexPage.style.display = 'none';
-    mainMenu.style.display = 'none';
-    timeline.style.display = 'none';
-    moments.style.display = 'none';
-    convos.style.display = 'none';
-    gaming.style.display = 'none';
-    media.style.display = 'none';
-    jokes.style.display = 'none';
-    stats.style.display = 'none';
-    future.style.display = 'none';
-    startQuiz();
-  };
-
-  bajaBtn.onclick = () => {
-    result.style.display = 'none';
-    bajaBlast.style.display = 'block';
-  };
-
-  ratingBtn.onclick = () => {
-    result.style.display = 'none';
-    rating.style.display = 'block';
-  };
-
-  trexBtn.onclick = () => {
-    result.style.display = 'none';
-    trexPage.style.display = 'block';
-    startSparkles();
-  };
-
-  mainMenuBtn.onclick = () => {
-    result.style.display = 'none';
-    mainMenu.style.display = 'block';
-  };
-
-  backBtn.onclick = () => {
-    bajaBlast.style.display = 'none';
-    result.style.display = 'block';
-  };
-
-  backBtn2.onclick = () => {
-    rating.style.display = 'none';
-    result.style.display = 'block';
-  };
-
-  backToResultBtn.onclick = () => {
-    mainMenu.style.display = 'none';
-    result.style.display = 'block';
-  };
-
-  backFromTrexBtn.onclick = () => {
-    trexPage.style.display = 'none';
-    result.style.display = 'block';
-  };
-
-  cakeImage.onclick = () => {
-    cakeMessage.style.display = 'block';
-  };
-
-  // Menu navigation
-  document.getElementById('timelineBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    timeline.style.display = 'block';
-  };
-
-  document.getElementById('momentsBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    moments.style.display = 'block';
-  };
-
-  document.getElementById('convosBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    convos.style.display = 'block';
-  };
-
-  document.getElementById('gamingBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    gaming.style.display = 'block';
-  };
-
-  document.getElementById('mediaBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    media.style.display = 'block';
-  };
-
-  document.getElementById('jokesBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    jokes.style.display = 'block';
-  };
-
-  document.getElementById('statsBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    stats.style.display = 'block';
-  };
-
-  document.getElementById('futureBtn').onclick = () => {
-    mainMenu.style.display = 'none';
-    future.style.display = 'block';
-  };
-
-  // Back to menu buttons
-  document.querySelectorAll('.back-to-menu').forEach(btn => {
-    btn.onclick = () => {
-      timeline.style.display = 'none';
-      moments.style.display = 'none';
-      convos.style.display = 'none';
-      gaming.style.display = 'none';
-      media.style.display = 'none';
-      jokes.style.display = 'none';
-      stats.style.display = 'none';
-      future.style.display = 'none';
-      mainMenu.style.display = 'block';
-    };
-  });
-
-  // Sparkles for T-Rex page
-  function startSparkles() {
-    sparkles.innerHTML = '';
-    const sparkleSymbols = ['✨', '💖', '🎀', '💕', '⭐', '🌟'];
-    
-    for (let i = 0; i < 20; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-      sparkle.textContent = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
-      sparkle.style.left = `${Math.random() * 100}%`;
-      sparkle.style.animationDelay = `${Math.random() * 4}s`;
-      sparkle.style.animationDuration = `${3 + Math.random() * 2}s`;
-      sparkles.appendChild(sparkle);
-    }
-  }
-
-  // Rating system
-  const stars = document.querySelectorAll('.star');
-  stars.forEach(star => {
-    star.addEventListener('click', () => {
-      const rating = parseInt(star.dataset.rating);
-      updateStars(rating);
-      showRatingMessage(rating);
-    });
-
-    star.addEventListener('mouseover', () => {
-      const rating = parseInt(star.dataset.rating);
-      updateStars(rating);
-    });
-  });
-
-  starRating.addEventListener('mouseleave', () => {
-    const activeRating = document.querySelector('.star.clicked');
-    if (activeRating) {
-      updateStars(parseInt(activeRating.dataset.rating));
-    } else {
-      updateStars(0);
-    }
-  });
-
-  function updateStars(rating) {
-    stars.forEach((star, index) => {
-      if (index < rating) {
-        star.classList.add('active');
-      } else {
-        star.classList.remove('active');
-      }
-    });
-  }
-
-  function showRatingMessage(rating) {
-    stars.forEach(star => star.classList.remove('clicked'));
-    stars[rating - 1].classList.add('clicked');
-    
-    const messages = {
-      1: "So, you hate me.",
-      2: "Wow, Rude",
-      3: "Room for improvementh.",
-      4: "Glad you enjoyed it!",
-      5: "You're the best, Tessa! Thanks for playing!"
-    };
-    
-    ratingMessage.textContent = messages[rating];
-    ratingMessage.style.display = 'block';
-  }
-
-  function startQuiz() {
-    score = 0;
-    current = 0;
-    seconds = 0;
-    cakeSurprise.style.display = 'none';
-    cakeMessage.style.display = 'none';
-    quiz.style.display = 'block';
-    result.style.display = 'none';
-    timerScore.style.display = 'block';
-    liveScoreEl.textContent = score;
-    timerEl.textContent = seconds;
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-      seconds++;
-      timerEl.textContent = seconds;
-    }, 1000);
-    showQuestion();
-  }
-
-  function showQuestion() {
-    const q = questions[current];
-    questionEl.textContent = q.q;
-    answersEl.innerHTML = "";
-    
-    // Shuffle the answer options
-    const shuffledOptions = shuffle(q.options);
-    
-    shuffledOptions.forEach(opt => {
-      const btn = document.createElement('button');
-      btn.textContent = opt;
-      btn.onclick = () => {
-        disableButtons();
-        if (opt === q.answer) {
-          btn.style.backgroundColor = 'lightgreen';
-          score++;
-        } else {
-          btn.style.backgroundColor = 'salmon';
-        }
-        liveScoreEl.textContent = score;
-        setTimeout(() => {
-          current++;
-          if (current < questions.length) {
-            showQuestion();
-          } else {
-            showResult();
-          }
-        }, 700);
-      };
-      answersEl.appendChild(btn);
-    });
-  }
-
-  function disableButtons() {
-    answersEl.querySelectorAll('button').forEach(b => b.disabled = true);
-  }
-
-  function showResult() {
-    quiz.style.display = 'none';
-    result.style.display = 'block';
-    scoreText.textContent = `You got ${score} out of ${questions.length} correct in ${seconds}s! 🎉`;
-    clearInterval(timerInterval);
-    startConfetti();
-    if (score === questions.length) {
-      cakeSurprise.style.display = 'flex';
-    }
-  }
-
-  // Pink confetti setup
-  const canvas = document.getElementById('confetti');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-
-  const confetti = [];
-  for (let i = 0; i < 150; i++) {
-    confetti.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 6 + 2,
-      d: Math.random() * 50,
-      color: `hsl(${320 + Math.random() * 40}, 100%, ${70 + Math.random() * 20}%)`,
-      tilt: Math.random() * 10 - 10,
-      tiltAngle: 0
-    });
-  }
-
-  function drawConfetti() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let c of confetti) {
-      ctx.beginPath();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = c.color;
-      ctx.moveTo(c.x + c.tilt + c.r / 2, c.y);
-      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 2);
-      ctx.stroke();
-    }
-    updateConfetti();
-  }
-
-  function updateConfetti() {
-    for (let c of confetti) {
-      c.y += Math.cos(c.d) + 1 + c.r / 2;
-      c.x += Math.sin(c.d);
-      c.tiltAngle += 0.1;
-      c.tilt = Math.sin(c.tiltAngle) * 15;
-      if (c.y > canvas.height) {
-        c.y = -10;
-        c.x = Math.random() * canvas.width;
-      }
-    }
-  }
-
-  function startConfetti() {
-    setInterval(drawConfetti, 20);
-  }
-
-  // Floating emojis
-  const emojiList = ["🐬", "🐠", "🐙", "🦑", "🐳", "🦀", "🐢", "🪼", "🌊"];
-  const emojiContainer = document.getElementById('emojiDecor');
-  for (let i = 0; i < 30; i++) {
-    const e = document.createElement('div');
-    e.classList.add('emoji');
-    e.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
-    e.style.left = `${Math.random() * 100}%`;
-    e.style.top = `${Math.random() * 100}%`;
-    e.style.animationDuration = `${6 + Math.random() * 6}s`;
-    e.style.fontSize = `${1.5 + Math.random() * 1.5}rem`;
-    emojiContainer.appendChild(e);
-  }
-</script>
-</body>
-</html>
