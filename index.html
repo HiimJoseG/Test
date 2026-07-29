@@ -178,7 +178,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
 
-    #musicToggle {
+    #musicToggle, #musicNext {
       background: white;
       border: none;
       border-radius: 50%;
@@ -380,10 +380,11 @@
 <div id="musicPlayer">
   <button id="musicToggle">▶️</button>
   <span id="musicLabel">🎵 Somethin' Stupid</span>
+  <button id="musicNext">⏭️</button>
   <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5" />
 </div>
 <audio id="bgMusic" loop preload="none">
-  <source src="20. Frank Sinatra & Nancy Sinatra - Somethin' Stupid.mp3" type="audio/mpeg">
+  <source id="bgMusicSource" src="somethin-stupid.mp3" type="audio/mpeg">
 </audio>
 
 <div id="timerScore" style="display:none;">
@@ -493,10 +494,33 @@
 
 <script>
   const musicToggle = document.getElementById('musicToggle');
+  const musicNext = document.getElementById('musicNext');
   const musicVolume = document.getElementById('musicVolume');
+  const musicLabel = document.getElementById('musicLabel');
   const bgMusic = document.getElementById('bgMusic');
+  const bgMusicSource = document.getElementById('bgMusicSource');
+
+  const playlist = [
+    { title: "🎵 Somethin' Stupid", src: "somethin-stupid.mp3" },
+    { title: "🎵 The Longest Goodbye", src: "the-longest-goodbye.mp3" }
+  ];
+  let currentTrack = 0;
 
   bgMusic.volume = musicVolume.value;
+
+  function loadTrack(index, autoplay) {
+    currentTrack = index;
+    const track = playlist[currentTrack];
+    musicLabel.textContent = track.title;
+    bgMusicSource.src = track.src;
+    bgMusic.load();
+    if (autoplay) {
+      bgMusic.play();
+      musicToggle.textContent = '⏸️';
+    } else {
+      musicToggle.textContent = '▶️';
+    }
+  }
 
   musicToggle.onclick = () => {
     if (bgMusic.paused) {
@@ -506,6 +530,12 @@
       bgMusic.pause();
       musicToggle.textContent = '▶️';
     }
+  };
+
+  musicNext.onclick = () => {
+    const wasPlaying = !bgMusic.paused;
+    const nextIndex = (currentTrack + 1) % playlist.length;
+    loadTrack(nextIndex, wasPlaying);
   };
 
   musicVolume.oninput = () => {
