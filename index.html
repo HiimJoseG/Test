@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Happy Spooky Birthday Tessa! 🎃</title>
+  <title>Happy Birthday Tessa!</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Creepster', 'Comic Sans MS', cursive;
-      background: linear-gradient(to bottom, #1a0933, #2d1b4e, #ff6b35);
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom, #63bfb6, #FFB6C1);
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -16,86 +16,100 @@
       flex-direction: column;
     }
 
-    #card, #quiz, #result, #bajaBlast, #rating, #trexPage, #mainMenu, #timeline, #moments, #convos, #gaming, #media, #jokes, #stats, #future {
+    #card, #quiz, #result, #bajaBlast, #rating, #trexPage, #pongPage {
       display: none;
-      background: rgba(26, 9, 51, 0.95);
+      background: rgba(255, 255, 255, 0.95);
       padding: 20px 30px;
       border-radius: 15px;
-      box-shadow: 0 0 20px #ff6b35, 0 0 40px rgba(255, 107, 53, 0.3);
+      box-shadow: 0 0 10px #008080;
       text-align: center;
       max-width: 420px;
       z-index: 1;
-      border: 2px solid #ff6b35;
-      color: #fff;
     }
 
-    #mainMenu {
-      max-width: 500px;
-    }
-
-    #timeline, #moments, #convos, #gaming, #media, #jokes, #stats, #future {
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn, #mainMenuBtn, .back-to-menu {
+    #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn, #pongBtn, #backFromPongBtn, #pongRestartBtn {
       padding: 12px 25px;
-      background: linear-gradient(45deg, #ff6b35, #ff8c42);
       color: white;
-      border: none;
       border-radius: 8px;
       font-size: 1em;
       cursor: pointer;
       margin-top: 10px;
-      box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-      transition: all 0.3s ease;
-      font-weight: bold;
+      border: 2px solid transparent;
     }
 
-    #startBtn:hover, #nextBtn:hover, #restartBtn:hover, .back-to-menu:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+    #startBtn {
+      background: #26a69a;
+      border-color: #00695c;
+    }
+
+    #nextBtn {
+      background: #f06292;
+      border-color: #c2185b;
+    }
+
+    #restartBtn {
+      background: #4db6ac;
+      border-color: #00897b;
     }
 
     #bajaBtn {
-      background: linear-gradient(45deg, #8b4513, #d2691e);
+      background: #ec407a;
+      border-color: #ad1457;
       margin-left: 10px;
     }
 
     #ratingBtn {
-      background: linear-gradient(45deg, #9370db, #8a2be2);
+      background: #80cbc4;
+      border-color: #00796b;
       margin-left: 10px;
     }
 
     #trexBtn {
-      background: linear-gradient(45deg, #228b22, #32cd32);
+      background: #ff8fab;
+      border-color: #e91e63;
       margin-left: 10px;
       animation: bounce 2s infinite;
     }
 
-    #mainMenuBtn {
-      background: linear-gradient(45deg, #ff4500, #ff6347);
+    #pongBtn {
+      background: #26c6da;
+      border-color: #00838f;
       margin-left: 10px;
     }
 
-    #backBtn, #backToResultBtn, #backFromTrexBtn, .back-to-menu {
-      background: #4a2c4a;
+    #backBtn {
+      background: #4dd0e1;
+      border-color: #0097a7;
+    }
+
+    #backToResultBtn {
+      background: #f48fb1;
+      border-color: #d81b60;
+    }
+
+    #backFromTrexBtn {
+      background: #00897b;
+      border-color: #004d40;
+    }
+
+    #backFromPongBtn {
+      background: #ff69b4;
+      border-color: #c2185b;
+    }
+
+    #pongRestartBtn {
+      background: #4fc3c9;
+      border-color: #007c85;
+      margin-left: 10px;
     }
 
     h1 {
-      color: #ff6b35;
-      text-shadow: 2px 2px 4px #000, 0 0 10px #ff6b35;
-    }
-
-    h2 {
-      color: #ff8c42;
-      text-shadow: 1px 1px 3px #000;
+      color: #d63384;
     }
 
     .hello-kitty {
       width: 120px;
       margin-bottom: 10px;
-      filter: hue-rotate(20deg) saturate(1.2);
     }
 
     .emoji-decor {
@@ -127,47 +141,76 @@
     .question {
       margin: 20px 0;
       font-size: 1.2em;
-      color: #ffa500;
     }
 
     .answers button {
       display: block;
       margin: 10px auto;
       padding: 10px 20px;
-      background: #2d1b4e;
-      border: 2px solid #ff6b35;
+      background: #ffd6ec;
+      border: 2px solid #ff69b4;
       border-radius: 8px;
       cursor: pointer;
       font-size: 1em;
-      color: #fff;
-      transition: all 0.3s ease;
-    }
-
-    .answers button:hover {
-      background: #3d2b5e;
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ff6b35;
     }
 
     #messageBox {
-      background: rgba(45, 27, 78, 0.7);
-      border: 2px dashed #ff6b35;
+      background: #f0fff8;
+      border: 2px dashed #044051;
       padding: 10px;
       border-radius: 10px;
       margin-top: 15px;
       font-size: 1em;
-      color: #ffa500;
+      color: #333;
+    }
+
+    #musicPlayer {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(45deg, #ff8fab, #4dd0e1);
+      padding: 8px 14px;
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    #musicToggle {
+      background: white;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 0.9em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #musicLabel {
+      color: white;
+      font-size: 0.85em;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    #musicVolume {
+      width: 60px;
+      cursor: pointer;
     }
 
     #timerScore {
       position: absolute;
       top: 15px;
       right: 20px;
-      color: #ff6b35;
+      color: #d63384;
       font-size: 1.1em;
       font-weight: bold;
       z-index: 2;
-      text-shadow: 1px 1px 3px #000;
     }
 
     @keyframes bounce {
@@ -190,22 +233,51 @@
     }
 
     #bajaBlast {
-      background: linear-gradient(135deg, #2d1b4e, #4a2c4a);
-      border: 3px solid #d2691e;
+      background: linear-gradient(135deg, #e3f2fd, #b3e5fc);
+      border: 3px solid #00bcd4;
     }
 
     #rating {
-      background: linear-gradient(135deg, #2d1b4e, #3d2b5e);
-      border: 3px solid #9370db;
+      background: linear-gradient(135deg, #fff8e1, #ffecb3);
+      border: 3px solid #ffd700;
     }
 
     #trexPage {
-      background: linear-gradient(135deg, #1a4d2e, #2d5f3d);
-      border: 3px solid #32cd32;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+      border: 3px solid #e91e63;
       max-width: 90vw;
       max-height: 90vh;
       padding: 30px;
       overflow-y: auto;
+    }
+
+    #pongPage {
+      background: linear-gradient(135deg, #ede7f6, #d1c4e9);
+      border: 3px solid #7c4dff;
+      max-width: 90vw;
+      padding: 25px;
+    }
+
+    #pongCanvas {
+      position: static;
+      background: #1a1a2e;
+      border-radius: 10px;
+      border: 3px solid #7c4dff;
+      display: block;
+      margin: 15px auto;
+      touch-action: none;
+    }
+
+    #pongScoreText {
+      color: #4527a0;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    #pongHint {
+      color: #5e35b1;
+      font-size: 0.9em;
+      margin-top: 5px;
     }
 
     .stars {
@@ -218,24 +290,23 @@
     .star {
       font-size: 2.5rem;
       cursor: pointer;
-      color: #4a2c4a;
+      color: #ddd;
       transition: color 0.2s;
     }
 
     .star:hover,
     .star.active {
-      color: #9370db;
-      text-shadow: 0 0 10px #9370db;
+      color: #ffd700;
     }
 
     .rating-message {
-      background: rgba(147, 112, 219, 0.2);
-      border: 2px dashed #9370db;
+      background: #fff9c4;
+      border: 2px dashed #ffd700;
       padding: 15px;
       border-radius: 10px;
       margin-top: 15px;
       font-size: 1.1em;
-      color: #ffa500;
+      color: #333;
       display: none;
     }
 
@@ -252,7 +323,7 @@
       max-width: 600px;
       height: auto;
       border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(50, 205, 50, 0.3);
+      box-shadow: 0 8px 16px rgba(233, 30, 99, 0.3);
       margin: 20px 0;
       animation: wiggle 3s ease-in-out infinite;
     }
@@ -264,13 +335,13 @@
     }
 
     .trex-message {
-      background: rgba(50, 205, 50, 0.2);
-      border: 3px dashed #32cd32;
+      background: #f0fff8;
+      border: 3px dashed #FFC0CB;
       padding: 20px;
       border-radius: 15px;
       margin: 20px 0;
       font-size: 1.2em;
-      color: #90ee90;
+      color: #e91e63;
       font-weight: bold;
     }
 
@@ -284,7 +355,7 @@
 
     .sparkle {
       position: absolute;
-      color: #32cd32;
+      color: #ff69b4;
       font-size: 1.5rem;
       animation: sparkleFloat 4s linear infinite;
     }
@@ -299,129 +370,6 @@
         opacity: 0;
       }
     }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .menu-btn {
-      background: #2d1b4e;
-      border: 2px solid #ff6b35;
-      border-radius: 8px;
-      padding: 15px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      color: #ffa500;
-    }
-
-    .menu-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.5);
-      background: #3d2b5e;
-    }
-
-    .menu-icon {
-      font-size: 2em;
-    }
-
-    .menu-title {
-      font-weight: bold;
-      color: #ff8c42;
-    }
-
-    .content-card {
-      background: rgba(45, 27, 78, 0.6);
-      border: 2px dashed #ff6b35;
-      padding: 15px;
-      border-radius: 10px;
-      margin: 15px 0;
-      text-align: left;
-    }
-
-    .content-card h3 {
-      color: #ff8c42;
-      margin-top: 0;
-    }
-
-    .timeline-item {
-      background: rgba(45, 27, 78, 0.6);
-      border-left: 4px solid #ff6b35;
-      padding: 15px;
-      border-radius: 8px;
-      margin: 15px 0;
-      text-align: left;
-    }
-
-    .timeline-item h3 {
-      color: #ff8c42;
-      margin-top: 0;
-    }
-
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .media-item {
-      background: rgba(45, 27, 78, 0.6);
-      border: 2px solid #ff6b35;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .media-placeholder {
-      width: 100%;
-      height: 150px;
-      background: linear-gradient(135deg, #2d1b4e, #4a2c4a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ff6b35;
-      font-size: 2em;
-    }
-
-    .media-caption {
-      padding: 10px;
-      font-size: 0.9em;
-      color: #ffa500;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .stat-card {
-      background: #2d1b4e;
-      border: 2px solid #ff6b35;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2em;
-      font-weight: bold;
-      color: #ff8c42;
-    }
-
-    .stat-label {
-      font-size: 0.9em;
-      color: #ffa500;
-      margin-top: 5px;
-    }
   </style>
 </head>
 <body>
@@ -429,30 +377,40 @@
 <canvas id="confetti"></canvas>
 <div class="emoji-decor" id="emojiDecor"></div>
 
+<div id="musicPlayer">
+  <button id="musicToggle">▶️</button>
+  <span id="musicLabel">🎵 Birthday Tunes</span>
+  <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5" />
+</div>
+<audio id="bgMusic" loop preload="none">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
 <div id="timerScore" style="display:none;">
   Time: <span id="timer">0</span>s  Score: <span id="liveScore">0</span>/10
 </div>
 
-<button id="startBtn">🎃 Click to Open, Tessa! 👻</button>
-<img class="hello-kitty" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWV4YnJ4d2txc3BqY3RoOWQ5N3FwODIyZjY2dXcyNWUxd3BlNzhscyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o6wNJBF6U6VZWmLny/giphy.gif" alt="Hello Kitty GIF" />
+<button id="startBtn">Click to Open, Tessa!</button>
+<img class="hello-kitty" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm83bHExMG1zdmlicmM2YWhqdHoxdHdpcXE2eGkyejAycHlpNHBjMyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/JshTg7AyRI8SQUSnmU/giphy.gif" alt="Hello Kitty GIFF" />
 
 <div id="card">
-  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+ <img id="trex-result" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXJpbGtnaDdsaDhzY2x4a2prcGR4YmhrYmEzenJ6amltZWVxMG5qbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/18TAwtGK8N6JKnkgdr/giphy.gif" 
        alt="T-Rex GIF" 
        style="width: 120px; margin-bottom: 10px;" />
-  <img class="hello-kitty" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExanpydzNnMmFqYzYzMWhqd2Nkcm1lNnd0MGF4eml5MG1iZzNzdHAzbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZqbBT64ECtjy/giphy.gif" alt="Hello Kitty GIF" />
-  <h1>🎃 Happy SPOOKY 16th Birthday, Tess! 👻</h1>
-  <p>You're awesome, great to talk to, super funny, and you're all around amazing (I think so). Hope you get better at fort. Keep being you! 🦇🕷️</p>
+  <img class="hello-kitty" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzBmdTllc2VtZTkzMWIwOHdlN2d4d3NtN3lmYm10Y2M0OXdkdzYyeiZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/em5KFVnqz7KdO942JL/giphy.gif" alt="Hello Kitty GIF" />
+  <h1> 🦭 Happy 17th Birthday, Tess! 👁️ </h1>
+  <p> You're still amazing, music taste is superb. Still listen to Car Seat Headrest on the daily, sublime too. </p>
   <div id="messageBox">
+
     Hey Tessa,<br />
-    Can't believe you started out thinking I was somebody you hated, or would hate. I think I'm past that point though...Right? Hope you have a spooky great day (and birthday) also hope you pass that test ON FRIDAYYY! May your year continue to be filled with joy, friends, and the courage to follow through with your goals. Keep being awesome as well. Stay grinding on fortnite twin. 🎃👻<br />
+    It's been over a year knowing you! It's definitely been one I've enjoyed. I know we haven't talked as often this year, but as I said before. You remain important to me, I wish the absolute best for you this school year. In whatever classes you may take and whatever the future holds. You're amazing Tessa, and I know you will continue to be amazing. Hope to hang out soon and maybe even get the chance to do some photos for you! Have a great rest of your birthday, Brotein Shake. You're one in a Krillion.<br />
     — Jose
   </div>
-  <button id="nextBtn">🕷️ Woahhh Random Spooky Quiz??? 🦇</button>
+  <button id="nextBtn"> Woahhh A Not So Random quiz option??? 🦭🦭🦭</button>
 </div>
 
 <div id="quiz">
-  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+   <img id="trex-result" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3YwOWNvaTJhdDE2bG9oMHB4aXU3ajNidGk3M3EweDZ1eXd4aW1kOSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/Rko3rv2gWNbwaGV2ur/giphy.gif" 
        alt="T-Rex Quiz" 
        style="width: 100px; margin: 0 auto 10px; display: block;" />
   <div class="question" id="question">Loading...</div>
@@ -461,115 +419,576 @@
 
 <div id="result">
   <h2>🎊 You did it! 🎊</h2>
-  <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWFoMTh3Y2dyaTdxN2Rkd3B5OGc5bDNsZnQ4ZzEyYnM4YTJheHZxNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JZLaL7vxYBMwOw4Vjd/giphy.gif" 
+  <img id="trex-result" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3YwOWNvaTJhdDE2bG9oMHB4aXU3ajNidGk3M3EweDZ1eXd4aW1kOSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/YXoer7lVWlBztVn2ZL/giphy.gif" 
        alt="T-Rex Result" 
        style="width: 100px; margin-bottom: 10px;" />
   <p id="scoreText"></p>
   <div id="cakeSurprise" style="display:none; flex-direction: column; align-items: center; margin-top: 20px;">
-    <img id="cakeImage" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExYm54eDR0dnVrbzZmOHNnOGpxMnR1c2dlcnkwODljN2xnZjNzNXM5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11USZ5ilAUYRMI/giphy.gif" alt="Cake GIF" style="width: 150px; cursor: pointer; animation: bounce 1.2s infinite;" />
-    <p style="color: #ff8c42; font-weight: bold;">🎃 Click the cake! 🎃</p>
+    <img id="cakeImage" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczJ5b3UyN3hka2xoeGRtNmEzeGdhMjAxeGttNzNqOTczeTg5Zm94dyZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/pNqUKvOlvIj3K1syOp/giphy.gif" alt="Pink Cake GIF" style="width: 150px; cursor: pointer; animation: bounce 1.2s infinite;" />
+    <p style="color: #d63384; font-weight: bold;">🎂 Click the guy who ate the cake! 🎂</p>
   </div>
-  <div id="cakeMessage" style="display:none; background: rgba(45, 27, 78, 0.8); border: 2px dashed #ff6b35; padding: 15px 25px; border-radius: 12px; font-size: 1.1em; margin-top: 15px; max-width: 400px; text-align: center; color: #ffa500;">
-    🎉 Perfect score! You got them all right, geek. — Jose 
+  <div id="cakeMessage" style="display:none; background: #fff0f9; border: 2px dashed #ff69b4; padding: 15px 25px; border-radius: 12px; font-size: 1.1em; margin-top: 15px; max-width: 400px; text-align: center;">
+    Woah you still know the answers! Too bad Usagi answered them first.. — Jose 
   </div>
   <div class="button-group">
     <button id="restartBtn">🔁 Play Again</button>
-    <button id="bajaBtn">🍂 Pumpkin Spice Time!</button>
+    <button id="bajaBtn">Click this...!</button>
     <button id="ratingBtn">⭐ Rate This Quiz!</button>
-    <button id="trexBtn">🦖 T-Rex Surprise!</button>
-    <button id="mainMenuBtn">📋 Explore More!</button>
+    <button id="trexBtn">🦕 T-Rex Surprise!</button>
+    <button id="pongBtn">🏓 Play Pong!</button>
   </div>
 </div>
 
-<div id="mainMenu">
-  <h2 style="color: #ff8c42;">🌟 Our Spooky Friendship Journey 🌟</h2>
-  <p style="color: #ffa500; margin-bottom: 15px;">Choose what you want to explore!</p>
-  
-  <div class="menu-grid">
-    <button class="menu-btn" id="timelineBtn">
-      <span class="menu-icon">📅</span>
-      <span class="menu-title">Monthly Timeline</span>
-    </button>
-    
-    <button class="menu-btn" id="momentsBtn">
-      <span class="menu-icon">😂</span>
-      <span class="menu-title">Epic Moments</span>
-    </button>
-    
-    <button class="menu-btn" id="convosBtn">
-      <span class="menu-icon">💬</span>
-      <span class="menu-title">Deep Talks</span>
-    </button>
-    
-    <button class="menu-btn" id="gamingBtn">
-      <span class="menu-icon">🎮</span>
-      <span class="menu-title">Gaming Sessions</span>
-    </button>
-    
-    <button class="menu-btn" id="mediaBtn">
-      <span class="menu-icon">📸</span>
-      <span class="menu-title">Photos & Videos</span>
-    </button>
-    
-    <button class="menu-btn" id="jokesBtn">
-      <span class="menu-icon">🤪</span>
-      <span class="menu-title">Inside Jokes</span>
-    </button>
-    
-    <button class="menu-btn" id="statsBtn">
-      <span class="menu-icon">📊</span>
-      <span class="menu-title">Friendship Stats</span>
-    </button>
-    
-    <button class="menu-btn" id="futureBtn">
-      <span class="menu-icon">🚀</span>
-      <span class="menu-title">Future Plans</span>
-    </button>
-  </div>
-  
-  <button id="backToResultBtn">← Back to Quiz Results</button>
+<div id="bajaBlast">
+  <h2 style="color: #00bcd4;">🌊 The goat! 🌊</h2>
+  <img class="baja-cup" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3YwOWNvaTJhdDE2bG9oMHB4aXU3ajNidGk3M3EweDZ1eXd4aW1kOSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/eSXWBGl2XB2UCmbfpl/giphy.gif" alt="Baja Blast Cup" />
+  <p style="color: #00695c; font-size: 1.1em;">Awesome Part-Fish Part-Man! 🎉</p>
+  <p style="color: #00838f;">Hangyodon! 🏝️</p>
+  <button id="backBtn">← Back to Results</button>
 </div>
 
-<div id="timeline">
-  <h2 style="color: #ff8c42;">📅 Monthly Timeline</h2>
+<div id="rating">
+  <h2 style="color: #ff8f00;">🦈 Rate This Quiz! 🦈</h2>
+  <p style="color: #e65100;">How did you like the birthday quiz experience?</p>
   
-  <div class="timeline-item">
-    <h3>🍂 September</h3>
-    <p>Add your September memories here...</p>
+  <div class="stars" id="starRating">
+    <span class="star" data-rating="1">🐟</span>
+    <span class="star" data-rating="2">🐟</span>
+    <span class="star" data-rating="3">🐟</span>
+    <span class="star" data-rating="4">🐟</span>
+    <span class="star" data-rating="5">🐟</span>
   </div>
   
-  <div class="timeline-item">
-    <h3>🎃 October</h3>
-    <p>Add your October memories here...</p>
-  </div>
+  <div class="rating-message" id="ratingMessage"></div>
   
-  <div class="timeline-item">
-    <h3>🍁 November</h3>
-    <p>Add your November memories here...</p>
-  </div>
-  
-  <div class="timeline-item">
-    <h3>❄️ December</h3>
-    <p>Add your December memories here...</p>
-  </div>
-  
-  <button class="back-to-menu">← Back to Menu</button>
+  <button id="backToResultBtn">← Back to Results</button>
 </div>
 
-<div id="moments">
-  <h2 style="color: #ff8c42;">😂 Epic Moments</h2>
+<div id="trexPage">
+  <div class="sparkles" id="sparkles"></div>
+  <h1 style="color: #e91e63; font-size: 2.5em;">🦕✨ SURPRISE! ✨🦕</h1>
+  <img class="trex-fullscreen" src="https://media.craiyon.com/2025-04-27/xaYEbeUET5yJxMJYLy--jQ.webp" alt="T-Rex in Pink Tutu" />
   
-  <div class="content-card">
-    <h3>🎭 The Funniest Moment</h3>
-    <p>Remember when [describe the funniest thing]...</p>
+  <div class="trex-message">
+    🎀 Meet Terry the T-Rex! 🎀<br/>
   </div>
   
-  <div class="content-card">
-    <h3>🤦 Most Embarrassing</h3>
-    <p>[Add an embarrassing but funny moment]</p>
-  </div>
+  <p style="color: #ad1457; font-size: 1.3em; margin: 20px 0;">
+    🌟surprise!🌟
+  </p>
   
-  <div class="content-card">
-    <h3>🎉 Most Random</h3>
-    <p>[That completely random thing]</p>
+  <button id="backFromTrexBtn">← Back to Results</button>
+</div>
+
+<div id="pongPage">
+  <h2 style="color: #4527a0;">🏓 Birthday Pong! 🏓</h2>
+  <p id="pongScoreText">You: 0  &nbsp;—&nbsp;  CPU: 0</p>
+  <canvas id="pongCanvas" width="360" height="220"></canvas>
+  <p id="pongHint">Move your mouse/finger over the board to move your paddle. First to 5 wins!</p>
+  <div class="button-group">
+    <button id="pongRestartBtn">🔁 Restart Pong</button>
+    <button id="backFromPongBtn">← Back to Results</button>
   </div>
+</div>
+
+<script>
+  const musicToggle = document.getElementById('musicToggle');
+  const musicVolume = document.getElementById('musicVolume');
+  const bgMusic = document.getElementById('bgMusic');
+
+  bgMusic.volume = musicVolume.value;
+
+  musicToggle.onclick = () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      musicToggle.textContent = '⏸️';
+    } else {
+      bgMusic.pause();
+      musicToggle.textContent = '▶️';
+    }
+  };
+
+  musicVolume.oninput = () => {
+    bgMusic.volume = musicVolume.value;
+  };
+
+  const startBtn = document.getElementById('startBtn');
+  const card = document.getElementById('card');
+  const nextBtn = document.getElementById('nextBtn');
+  const quiz = document.getElementById('quiz');
+  const result = document.getElementById('result');
+  const bajaBlast = document.getElementById('bajaBlast');
+  const rating = document.getElementById('rating');
+  const trexPage = document.getElementById('trexPage');
+  const pongPage = document.getElementById('pongPage');
+  const questionEl = document.getElementById('question');
+  const answersEl = document.getElementById('answers');
+  const scoreText = document.getElementById('scoreText');
+  const restartBtn = document.getElementById('restartBtn');
+  const bajaBtn = document.getElementById('bajaBtn');
+  const ratingBtn = document.getElementById('ratingBtn');
+  const trexBtn = document.getElementById('trexBtn');
+  const pongBtn = document.getElementById('pongBtn');
+  const backBtn = document.getElementById('backBtn');
+  const backToResultBtn = document.getElementById('backToResultBtn');
+  const backFromTrexBtn = document.getElementById('backFromTrexBtn');
+  const backFromPongBtn = document.getElementById('backFromPongBtn');
+  const pongRestartBtn = document.getElementById('pongRestartBtn');
+  const cakeImage = document.getElementById('cakeImage');
+  const cakeSurprise = document.getElementById('cakeSurprise');
+  const cakeMessage = document.getElementById('cakeMessage');
+  const timerScore = document.getElementById('timerScore');
+  const timerEl = document.getElementById('timer');
+  const liveScoreEl = document.getElementById('liveScore');
+  const starRating = document.getElementById('starRating');
+  const ratingMessage = document.getElementById('ratingMessage');
+  const sparkles = document.getElementById('sparkles');
+
+  const questions = [
+    { q: "How many hearts does an octopus have?", options: ["1!", "50!", "5!", "3!"], answer: "3!" },
+    { q: "What color is Hello Kitty's bow?", options: ["Red", "Pink", "Blue", "Yellow"], answer: "Red" },
+    { q: "Which marine animal can change color?", options: ["Octopus", "Shark", "Dolphin", "Whale"], answer: "Octopus" },
+    { q: "Which ocean zone is in complete darkness and lies below the photic zone?", options: ["Abyssal zone", "Usagi Zone", "Neritic zone", "Epipelagic zone"], answer: "Abyssal zone" },
+    { q: "Which is NOT a real sea creature?", options: ["Sea Bunny", "Leafy Sea Dragon", "Ocean Unicorn", "Sea Cucumber"], answer: "Ocean Unicorn" },
+    { q: "Which Hello Kitty character is her twin?", options: ["Mimmy", "Dear Daniel", "Badtz-Maru", "My Melody"], answer: "Mimmy" },
+    { q: "What creature has eight arms?", options: ["Octopus", "Starfish", "Squid", "Crab"], answer: "Octopus" },
+    { q: "Which animal is called the 'sea cow'?", options: ["Manatee", "Dolphin", "Seal", "Otter"], answer: "Manatee" },
+    { q: "Which marine animal has a shell?", options: ["Sea turtle", "Shark", "Octopus", "Jellyfish"], answer: "Sea turtle" },
+    { q: "Which of these animals belongs to the dolphin family (Delphinidae)?", options: ["Orca", "Blue Whale", "Walrus", "Beluga Whale"], answer: "Orca" }
+
+  ];
+
+  let current = 0, score = 0, seconds = 0, timerInterval;
+
+  function shuffle(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  startBtn.onclick = () => {
+    startBtn.style.display = 'none';
+    document.querySelector('.hello-kitty').style.display = 'none';
+    card.style.display = 'block';
+  };
+
+  nextBtn.onclick = () => {
+    card.style.display = 'none';
+    quiz.style.display = 'block';
+    startQuiz();
+  };
+
+  restartBtn.onclick = () => {
+    result.style.display = 'none';
+    bajaBlast.style.display = 'none';
+    rating.style.display = 'none';
+    trexPage.style.display = 'none';
+    pongPage.style.display = 'none';
+    stopPong();
+    startQuiz();
+  };
+
+  bajaBtn.onclick = () => {
+    result.style.display = 'none';
+    bajaBlast.style.display = 'block';
+  };
+
+  ratingBtn.onclick = () => {
+    result.style.display = 'none';
+    rating.style.display = 'block';
+  };
+
+  trexBtn.onclick = () => {
+    result.style.display = 'none';
+    trexPage.style.display = 'block';
+    startSparkles();
+  };
+
+  pongBtn.onclick = () => {
+    result.style.display = 'none';
+    pongPage.style.display = 'block';
+    startPong();
+  };
+
+  backBtn.onclick = () => {
+    bajaBlast.style.display = 'none';
+    result.style.display = 'block';
+  };
+
+  backToResultBtn.onclick = () => {
+    rating.style.display = 'none';
+    result.style.display = 'block';
+  };
+
+  backFromTrexBtn.onclick = () => {
+    trexPage.style.display = 'none';
+    result.style.display = 'block';
+  };
+
+  backFromPongBtn.onclick = () => {
+    pongPage.style.display = 'none';
+    result.style.display = 'block';
+    stopPong();
+  };
+
+  pongRestartBtn.onclick = () => {
+    startPong();
+  };
+
+  cakeImage.onclick = () => {
+    cakeMessage.style.display = 'block';
+  };
+
+  function startSparkles() {
+    sparkles.innerHTML = '';
+    const sparkleSymbols = ['🐠', '💖', '🎀', '💕', '🐟', '🌟'];
+    
+    for (let i = 0; i < 20; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.textContent = sparkleSymbols[Math.floor(Math.random() * sparkleSymbols.length)];
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.animationDelay = `${Math.random() * 4}s`;
+      sparkle.style.animationDuration = `${3 + Math.random() * 2}s`;
+      sparkles.appendChild(sparkle);
+    }
+  }
+
+  const stars = document.querySelectorAll('.star');
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const rating = parseInt(star.dataset.rating);
+      updateStars(rating);
+      showRatingMessage(rating);
+    });
+
+    star.addEventListener('mouseover', () => {
+      const rating = parseInt(star.dataset.rating);
+      updateStars(rating);
+    });
+  });
+
+  starRating.addEventListener('mouseleave', () => {
+    const activeRating = document.querySelector('.star.clicked');
+    if (activeRating) {
+      updateStars(parseInt(activeRating.dataset.rating));
+    } else {
+      updateStars(0);
+    }
+  });
+
+  function updateStars(rating) {
+    stars.forEach((star, index) => {
+      if (index < rating) {
+        star.classList.add('active');
+      } else {
+        star.classList.remove('active');
+      }
+    });
+  }
+
+  function showRatingMessage(rating) {
+    stars.forEach(star => star.classList.remove('clicked'));
+    stars[rating - 1].classList.add('clicked');
+    
+    const messages = {
+      1: "So, you still hate me.",
+      2: "Wow, that's a bit harsh",
+      3: "Glad to know it was decent.",
+      4: "I'll do better next time.",
+      5: "You're the best, Tessa! Thanks for being you!"
+    };
+    
+    ratingMessage.textContent = messages[rating];
+    ratingMessage.style.display = 'block';
+  }
+
+  function startQuiz() {
+    score = 0;
+    current = 0;
+    seconds = 0;
+    cakeSurprise.style.display = 'none';
+    cakeMessage.style.display = 'none';
+    quiz.style.display = 'block';
+    result.style.display = 'none';
+    timerScore.style.display = 'block';
+    liveScoreEl.textContent = score;
+    timerEl.textContent = seconds;
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      seconds++;
+      timerEl.textContent = seconds;
+    }, 1000);
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const q = questions[current];
+    questionEl.textContent = q.q;
+    answersEl.innerHTML = "";
+    
+
+    const shuffledOptions = shuffle(q.options);
+    
+    shuffledOptions.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.textContent = opt;
+      btn.onclick = () => {
+        disableButtons();
+        if (opt === q.answer) {
+          btn.style.backgroundColor = 'lightgreen';
+          score++;
+        } else {
+          btn.style.backgroundColor = 'salmon';
+        }
+        liveScoreEl.textContent = score;
+        setTimeout(() => {
+          current++;
+          if (current < questions.length) {
+            showQuestion();
+          } else {
+            showResult();
+          }
+        }, 700);
+      };
+      answersEl.appendChild(btn);
+    });
+  }
+
+  function disableButtons() {
+    answersEl.querySelectorAll('button').forEach(b => b.disabled = true);
+  }
+
+  function showResult() {
+    quiz.style.display = 'none';
+    result.style.display = 'block';
+    scoreText.textContent = `You got ${score} out of ${questions.length} correct in ${seconds}s! 🎉`;
+    clearInterval(timerInterval);
+    startConfetti();
+    if (score === questions.length) {
+      cakeSurprise.style.display = 'flex';
+    }
+  }
+
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  const confetti = [];
+  for (let i = 0; i < 150; i++) {
+    confetti.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 6 + 2,
+      d: Math.random() * 50,
+      color: `hsl(${320 + Math.random() * 40}, 100%, ${70 + Math.random() * 20}%)`,
+      tilt: Math.random() * 10 - 10,
+      tiltAngle: 0
+    });
+  }
+
+  function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let c of confetti) {
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = c.color;
+      ctx.moveTo(c.x + c.tilt + c.r / 2, c.y);
+      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 2);
+      ctx.stroke();
+    }
+    updateConfetti();
+  }
+
+  function updateConfetti() {
+    for (let c of confetti) {
+      c.y += Math.cos(c.d) + 1 + c.r / 2;
+      c.x += Math.sin(c.d);
+      c.tiltAngle += 0.1;
+      c.tilt = Math.sin(c.tiltAngle) * 15;
+      if (c.y > canvas.height) {
+        c.y = -10;
+        c.x = Math.random() * canvas.width;
+      }
+    }
+  }
+
+  function startConfetti() {
+    setInterval(drawConfetti, 20);
+  }
+
+  const emojiList = ["🐬", "🐠", "🐙", "🦖", "🐳", "🦀", "🎓", "🪼", "🌊"];
+  const emojiContainer = document.getElementById('emojiDecor');
+  for (let i = 0; i < 30; i++) {
+    const e = document.createElement('div');
+    e.classList.add('emoji');
+    e.textContent = emojiList[Math.floor(Math.random() * emojiList.length)];
+    e.style.left = `${Math.random() * 100}%`;
+    e.style.top = `${Math.random() * 100}%`;
+    e.style.animationDuration = `${6 + Math.random() * 6}s`;
+    e.style.fontSize = `${1.5 + Math.random() * 1.5}rem`;
+    emojiContainer.appendChild(e);
+  }
+
+  const pongCanvas = document.getElementById('pongCanvas');
+  const pctx = pongCanvas.getContext('2d');
+  const pongScoreText = document.getElementById('pongScoreText');
+  const PONG_W = pongCanvas.width;
+  const PONG_H = pongCanvas.height;
+  const PADDLE_W = 10, PADDLE_H = 50, BALL_R = 6;
+  let pongAnimId = null;
+
+  let pong = {
+    playerY: PONG_H / 2 - PADDLE_H / 2,
+    cpuY: PONG_H / 2 - PADDLE_H / 2,
+    ballX: PONG_W / 2,
+    ballY: PONG_H / 2,
+    ballVX: 3,
+    ballVY: 2,
+    playerScore: 0,
+    cpuScore: 0,
+    gameOver: false
+  };
+
+  function resetPongBall(direction) {
+    pong.ballX = PONG_W / 2;
+    pong.ballY = PONG_H / 2;
+    pong.ballVX = 3 * direction;
+    pong.ballVY = (Math.random() > 0.5 ? 1 : -1) * (1.5 + Math.random() * 1.5);
+  }
+
+  function pongPointerHandler(e) {
+    const rect = pongCanvas.getBoundingClientRect();
+    let clientY;
+    if (e.touches && e.touches.length > 0) {
+      clientY = e.touches[0].clientY;
+    } else {
+      clientY = e.clientY;
+    }
+    const y = clientY - rect.top;
+    pong.playerY = Math.min(Math.max(y - PADDLE_H / 2, 0), PONG_H - PADDLE_H);
+  }
+
+  pongCanvas.addEventListener('mousemove', pongPointerHandler);
+  pongCanvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    pongPointerHandler(e);
+  }, { passive: false });
+
+  function startPong() {
+    pong.playerY = PONG_H / 2 - PADDLE_H / 2;
+    pong.cpuY = PONG_H / 2 - PADDLE_H / 2;
+    pong.playerScore = 0;
+    pong.cpuScore = 0;
+    pong.gameOver = false;
+    resetPongBall(Math.random() > 0.5 ? 1 : -1);
+    pongScoreText.textContent = `You: 0  —  CPU: 0`;
+    if (pongAnimId) cancelAnimationFrame(pongAnimId);
+    pongLoop();
+  }
+
+  function stopPong() {
+    if (pongAnimId) cancelAnimationFrame(pongAnimId);
+    pongAnimId = null;
+  }
+
+  function pongLoop() {
+    if (!pong.gameOver) {
+      updatePong();
+    }
+    drawPong();
+    pongAnimId = requestAnimationFrame(pongLoop);
+  }
+
+  function updatePong() {
+
+    pong.ballX += pong.ballVX;
+    pong.ballY += pong.ballVY;
+
+    if (pong.ballY - BALL_R < 0 || pong.ballY + BALL_R > PONG_H) {
+      pong.ballVY *= -1;
+    }
+
+    const cpuCenter = pong.cpuY + PADDLE_H / 2;
+    const targetY = pong.ballY;
+    if (cpuCenter < targetY - 10) pong.cpuY += 2.6;
+    else if (cpuCenter > targetY + 10) pong.cpuY -= 2.6;
+    pong.cpuY = Math.min(Math.max(pong.cpuY, 0), PONG_H - PADDLE_H);
+
+    if (pong.ballX - BALL_R < PADDLE_W + 4 &&
+        pong.ballY > pong.playerY &&
+        pong.ballY < pong.playerY + PADDLE_H &&
+        pong.ballVX < 0) {
+      pong.ballVX *= -1.05;
+      const hitPos = (pong.ballY - (pong.playerY + PADDLE_H / 2)) / (PADDLE_H / 2);
+      pong.ballVY += hitPos * 1.5;
+    }
+
+    if (pong.ballX + BALL_R > PONG_W - PADDLE_W - 4 &&
+        pong.ballY > pong.cpuY &&
+        pong.ballY < pong.cpuY + PADDLE_H &&
+        pong.ballVX > 0) {
+      pong.ballVX *= -1.05;
+      const hitPos = (pong.ballY - (pong.cpuY + PADDLE_H / 2)) / (PADDLE_H / 2);
+      pong.ballVY += hitPos * 1.5;
+    }
+
+    pong.ballVX = Math.max(Math.min(pong.ballVX, 9), -9);
+    pong.ballVY = Math.max(Math.min(pong.ballVY, 6), -6);
+
+    if (pong.ballX < 0) {
+      pong.cpuScore++;
+      pongScoreText.textContent = `You: ${pong.playerScore}  —  CPU: ${pong.cpuScore}`;
+      checkPongWin();
+      if (!pong.gameOver) resetPongBall(1);
+    } else if (pong.ballX > PONG_W) {
+      pong.playerScore++;
+      pongScoreText.textContent = `You: ${pong.playerScore}  —  CPU: ${pong.cpuScore}`;
+      checkPongWin();
+      if (!pong.gameOver) resetPongBall(-1);
+    }
+  }
+
+  function checkPongWin() {
+    if (pong.playerScore >= 5) {
+      pong.gameOver = true;
+      pongScoreText.textContent = `🎉 You win, Tessa! ${pong.playerScore} — ${pong.cpuScore} 🎉`;
+    } else if (pong.cpuScore >= 5) {
+      pong.gameOver = true;
+      pongScoreText.textContent = `CPU wins this round! ${pong.playerScore} — ${pong.cpuScore}. Try again!`;
+    }
+  }
+
+  function drawPong() {
+    pctx.fillStyle = '#1a1a2e';
+    pctx.fillRect(0, 0, PONG_W, PONG_H);
+
+    pctx.strokeStyle = 'rgba(255,255,255,0.3)';
+    pctx.setLineDash([6, 6]);
+    pctx.beginPath();
+    pctx.moveTo(PONG_W / 2, 0);
+    pctx.lineTo(PONG_W / 2, PONG_H);
+    pctx.stroke();
+    pctx.setLineDash([]);
+
+    pctx.fillStyle = '#b388ff';
+    pctx.fillRect(4, pong.playerY, PADDLE_W, PADDLE_H);
+    pctx.fillStyle = '#ff8fab';
+    pctx.fillRect(PONG_W - PADDLE_W - 4, pong.cpuY, PADDLE_W, PADDLE_H);
+
+    pctx.beginPath();
+    pctx.fillStyle = '#ffffff';
+    pctx.arc(pong.ballX, pong.ballY, BALL_R, 0, Math.PI * 2);
+    pctx.fill();
+  }
+</script>
+</body>
+</html>
