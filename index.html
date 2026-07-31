@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: 'Comic Sans MS', cursive;
-      background: linear-gradient(to bottom, #63bfb6, #FFB6C1);
+      background: linear-gradient(to bottom, #7cd6cc, #FFC8D6);
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -16,7 +16,7 @@
       flex-direction: column;
     }
 
-    #card, #quiz, #result, #bajaBlast, #rating, #trexPage, #pongPage {
+    #card, #quiz, #result, #bajaBlast, #rating, #trexPage, #pongPage, #feedback {
       display: none;
       background: rgba(255, 255, 255, 0.95);
       padding: 20px 30px;
@@ -27,7 +27,7 @@
       z-index: 1;
     }
 
-    #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn, #pongBtn, #backFromPongBtn, #pongRestartBtn {
+    #startBtn, #nextBtn, #restartBtn, #bajaBtn, #backBtn, #ratingBtn, #backToResultBtn, #trexBtn, #backFromTrexBtn, #pongBtn, #backFromPongBtn, #pongRestartBtn, #yesBtn, #noBtn, #backToStartBtn {
       padding: 12px 25px;
       color: white;
       border-radius: 8px;
@@ -35,6 +35,37 @@
       cursor: pointer;
       margin-top: 10px;
       border: 2px solid transparent;
+    }
+
+    button {
+      transition: transform 0.15s ease, left 0.25s ease, top 0.25s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.06);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    button:active {
+      transform: scale(0.9);
+    }
+
+    #trexBtn:hover {
+      animation-play-state: paused;
+    }
+
+    /* Click-pop animation applied to any button on click */
+    @keyframes clickPop {
+      0% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.25) rotate(5deg); }
+      50% { transform: scale(0.65) rotate(-9deg); }
+      70% { transform: scale(1.15) rotate(4deg); }
+      85% { transform: scale(0.92) rotate(-2deg); }
+      100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .btn-clicked {
+      animation: clickPop 0.5s cubic-bezier(.36,.07,.19,.97);
     }
 
     #startBtn {
@@ -103,6 +134,23 @@
       margin-left: 10px;
     }
 
+    #yesBtn {
+      background: #66bb6a;
+      border-color: #2e7d32;
+    }
+
+    #backToStartBtn {
+      background: #ab47bc;
+      border-color: #6a1b9a;
+      margin-left: 10px;
+    }
+
+    #noBtn {
+      background: #ef5350;
+      border-color: #b71c1c;
+      position: absolute;
+    }
+
     h1 {
       color: #d63384;
     }
@@ -147,11 +195,22 @@
       display: block;
       margin: 10px auto;
       padding: 10px 20px;
-      background: #ffd6ec;
-      border: 2px solid #ff69b4;
       border-radius: 8px;
       cursor: pointer;
       font-size: 1em;
+      border: 2px solid;
+    }
+
+    .answers button.answer-pink {
+      background: #ffd6ec;
+      border-color: #ff69b4;
+      color: #ad1457;
+    }
+
+    .answers button.answer-teal {
+      background: #b2f7ef;
+      border-color: #26a69a;
+      color: #00695c;
     }
 
     #messageBox {
@@ -176,9 +235,11 @@
       padding: 8px 14px;
       border-radius: 30px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      flex-wrap: wrap;
+      max-width: 90vw;
     }
 
-    #musicToggle, #musicNext {
+    #musicToggle, #musicNext, #musicShuffle {
       background: white;
       border: none;
       border-radius: 50%;
@@ -203,6 +264,16 @@
       cursor: pointer;
     }
 
+    #musicSelect {
+      border-radius: 15px;
+      border: none;
+      padding: 4px 8px;
+      font-size: 0.8em;
+      font-family: 'Comic Sans MS', cursive;
+      max-width: 140px;
+      cursor: pointer;
+    }
+
     #timerScore {
       position: absolute;
       top: 15px;
@@ -214,8 +285,8 @@
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-22px) scale(1.08); }
     }
 
     canvas {
@@ -258,6 +329,33 @@
       padding: 25px;
     }
 
+    #feedback {
+      background: linear-gradient(135deg, #fff0f6, #ffe0ec);
+      border: 3px solid #ff69b4;
+    }
+
+    #feedbackArea {
+      position: relative;
+      height: 160px;
+      margin-top: 10px;
+    }
+
+    #yesBtn {
+      position: static;
+    }
+
+    #cakeImage {
+      transition: transform 0.15s ease;
+    }
+
+    #cakeImage:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    #cakeImage:active {
+      transform: scale(0.9);
+    }
+
     #pongCanvas {
       position: static;
       background: #1a1a2e;
@@ -291,12 +389,18 @@
       font-size: 2.5rem;
       cursor: pointer;
       color: #ddd;
-      transition: color 0.2s;
+      transition: color 0.2s, transform 0.15s ease;
+      display: inline-block;
     }
 
     .star:hover,
     .star.active {
       color: #ffd700;
+      transform: translateY(-4px) scale(1.15);
+    }
+
+    .star:active {
+      transform: scale(0.85);
     }
 
     .rating-message {
@@ -329,9 +433,9 @@
     }
 
     @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-2deg); }
-      75% { transform: rotate(2deg); }
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(-6deg) scale(1.03); }
+      75% { transform: rotate(6deg) scale(1.03); }
     }
 
     .trex-message {
@@ -379,12 +483,15 @@
 
 <div id="musicPlayer">
   <button id="musicToggle">▶️</button>
-  <span id="musicLabel">🎵 Somethin' Stupid</span>
+  <span id="musicLabel">🎵 Amor Completo
+  </span>
+  <select id="musicSelect" title="Choose a song"></select>
+  <button id="musicShuffle" title="Shuffle songs">🔀</button>
   <button id="musicNext">⏭️</button>
   <input type="range" id="musicVolume" min="0" max="1" step="0.01" value="0.5" />
 </div>
 <audio id="bgMusic" loop preload="none">
-  <source id="bgMusicSource" src="somethin-stupid.mp3" type="audio/mpeg">
+  <source id="bgMusicSource" src="Amor Completo.mp3" type="audio/mpeg">
 </audio>
 
 <div id="timerScore" style="display:none;">
@@ -418,6 +525,16 @@
   <div class="answers" id="answers"></div>
 </div>
 
+<div id="feedback">
+  <h2 style="color: #d63384;">One quick thing! 💌</h2>
+  <p style="color: #ad1457; font-size: 1.1em;">Did you like the message and the quiz?</p>
+  <div id="feedbackArea">
+    <button id="yesBtn">Yes! 💖</button>
+    <button id="noBtn">No</button>
+  </div>
+  <p style="color: #999; font-size: 0.85em; margin-top: 10px;">(the "No" button is a little shy)</p>
+</div>
+
 <div id="result">
   <h2> You did it! </h2>
   <img id="trex-result" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3YwOWNvaTJhdDE2bG9oMHB4aXU3ajNidGk3M3EweDZ1eXd4aW1kOSZlcD12MV9zdGlja2Vyc19zZWFyY2gmY3Q9cw/YXoer7lVWlBztVn2ZL/giphy.gif" 
@@ -432,11 +549,12 @@
     Woah you still know the answers! Too bad Usagi answered them first.. — Jose 
   </div>
   <div class="button-group">
-    <button id="restartBtn">🔁 Play Again</button>
+    <button id="restartBtn">Retry?</button>
     <button id="bajaBtn">Click this...!</button>
-    <button id="ratingBtn">⭐ Rate This Quiz!</button>
-    <button id="trexBtn">🦕 T-Rex Surprise!</button>
-    <button id="pongBtn">🏓 Play Pong!</button>
+    <button id="ratingBtn">come on rate the Quiz!</button>
+    <button id="trexBtn">Same old T-Rex Surprise!</button>
+    <button id="pongBtn">woah a coded game!</button>
+    <button id="backToStartBtn">🏠 Back to Start</button>
   </div>
 </div>
 
@@ -485,7 +603,7 @@
   <h2 style="color: #4527a0;">🏓 Birthday Pong! 🏓</h2>
   <p id="pongScoreText">You: 0  &nbsp;—&nbsp;  CPU: 0</p>
   <canvas id="pongCanvas" width="360" height="220"></canvas>
-  <p id="pongHint">Move your mouse/finger over the board to move your paddle. First to 5 wins!</p>
+  <p id="pongHint">Rub your finger within the area to move your side. First to 5 wins!</p>
   <div class="button-group">
     <button id="pongRestartBtn">🔁 Restart Pong</button>
     <button id="backFromPongBtn">← Back to Results</button>
@@ -497,21 +615,36 @@
   const musicNext = document.getElementById('musicNext');
   const musicVolume = document.getElementById('musicVolume');
   const musicLabel = document.getElementById('musicLabel');
+  const musicSelect = document.getElementById('musicSelect');
+  const musicShuffle = document.getElementById('musicShuffle');
   const bgMusic = document.getElementById('bgMusic');
   const bgMusicSource = document.getElementById('bgMusicSource');
 
   const playlist = [
+    { title: "Amor Completo", src: "Amor Completo.mp3" },
     { title: "Somethin' Stupid", src: "20. Frank Sinatra & Nancy Sinatra - Somethin' Stupid.mp3" },
-    { title: "The Longest Goodbye", src: "the-longest-goodbye.mp3" }
+    { title: "Fill In The Blank", src: "Car Seat Headrest - Fill In The Blank.mp3" },
+    { title: "The Longest Goodbye", src: "the-longest-goodbye.mp3" },
+    { title: "It's Only Sex", src: "It's Only Sex.mp3" },
   ];
   let currentTrack = 0;
 
   bgMusic.volume = musicVolume.value;
 
+  // populate the song dropdown
+  playlist.forEach((track, i) => {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = track.title;
+    musicSelect.appendChild(opt);
+  });
+  musicSelect.value = currentTrack;
+
   function loadTrack(index, autoplay) {
     currentTrack = index;
     const track = playlist[currentTrack];
     musicLabel.textContent = track.title;
+    musicSelect.value = currentTrack;
     bgMusicSource.src = track.src;
     bgMusic.load();
     if (autoplay) {
@@ -538,14 +671,57 @@
     loadTrack(nextIndex, wasPlaying);
   };
 
+  musicSelect.onchange = () => {
+    // picking a song directly always starts it playing
+    loadTrack(parseInt(musicSelect.value), true);
+  };
+
+  musicShuffle.onclick = () => {
+    let randomIndex = currentTrack;
+    if (playlist.length > 1) {
+      while (randomIndex === currentTrack) {
+        randomIndex = Math.floor(Math.random() * playlist.length);
+      }
+    }
+    loadTrack(randomIndex, true);
+  };
+
   musicVolume.oninput = () => {
     bgMusic.volume = musicVolume.value;
   };
+
+  // try to start the music as soon as the page opens
+  function attemptAutoplay() {
+    const playPromise = bgMusic.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          musicToggle.textContent = '⏸️';
+        })
+        .catch(() => {
+          // browser blocked autoplay with sound; start on the first tap/click instead
+          musicToggle.textContent = '▶️';
+          const startOnFirstInteraction = () => {
+            bgMusic.play();
+            musicToggle.textContent = '⏸️';
+            document.removeEventListener('click', startOnFirstInteraction);
+            document.removeEventListener('touchstart', startOnFirstInteraction);
+          };
+          document.addEventListener('click', startOnFirstInteraction, { once: true });
+          document.addEventListener('touchstart', startOnFirstInteraction, { once: true });
+        });
+    }
+  }
+  window.addEventListener('DOMContentLoaded', attemptAutoplay);
 
   const startBtn = document.getElementById('startBtn');
   const card = document.getElementById('card');
   const nextBtn = document.getElementById('nextBtn');
   const quiz = document.getElementById('quiz');
+  const feedback = document.getElementById('feedback');
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const feedbackArea = document.getElementById('feedbackArea');
   const result = document.getElementById('result');
   const bajaBlast = document.getElementById('bajaBlast');
   const rating = document.getElementById('rating');
@@ -564,6 +740,7 @@
   const backFromTrexBtn = document.getElementById('backFromTrexBtn');
   const backFromPongBtn = document.getElementById('backFromPongBtn');
   const pongRestartBtn = document.getElementById('pongRestartBtn');
+  const backToStartBtn = document.getElementById('backToStartBtn');
   const cakeImage = document.getElementById('cakeImage');
   const cakeSurprise = document.getElementById('cakeSurprise');
   const cakeMessage = document.getElementById('cakeMessage');
@@ -573,6 +750,15 @@
   const starRating = document.getElementById('starRating');
   const ratingMessage = document.getElementById('ratingMessage');
   const sparkles = document.getElementById('sparkles');
+
+  // Give every button (and other clickable elements) a little pop animation whenever it's clicked/tapped
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('button, .star, #cakeImage');
+    if (!target) return;
+    target.classList.remove('btn-clicked');
+    void target.offsetWidth; // force reflow so the animation can replay
+    target.classList.add('btn-clicked');
+  });
 
   const questions = [
     { q: "How many hearts does an octopus have?", options: ["1!", "50!", "5!", "3!"], answer: "3!" },
@@ -617,6 +803,7 @@
     rating.style.display = 'none';
     trexPage.style.display = 'none';
     pongPage.style.display = 'none';
+    feedback.style.display = 'none';
     stopPong();
     startQuiz();
   };
@@ -670,6 +857,58 @@
 
   cakeImage.onclick = () => {
     cakeMessage.style.display = 'block';
+  };
+
+  backToStartBtn.onclick = () => {
+    // hide every screen
+    card.style.display = 'none';
+    quiz.style.display = 'none';
+    feedback.style.display = 'none';
+    result.style.display = 'none';
+    bajaBlast.style.display = 'none';
+    rating.style.display = 'none';
+    trexPage.style.display = 'none';
+    pongPage.style.display = 'none';
+    timerScore.style.display = 'none';
+    cakeSurprise.style.display = 'none';
+    cakeMessage.style.display = 'none';
+    stopPong();
+    clearInterval(timerInterval);
+
+    // bring back the opening screen
+    document.querySelector('.hello-kitty').style.display = 'block';
+    startBtn.style.display = 'inline-block';
+  };
+
+  // --- Runaway "No" button ---
+  function placeNoButtonRandomly() {
+    const areaW = feedbackArea.clientWidth;
+    const areaH = feedbackArea.clientHeight;
+    const btnW = noBtn.offsetWidth || 70;
+    const btnH = noBtn.offsetHeight || 44;
+    const maxX = Math.max(areaW - btnW, 0);
+    const maxY = Math.max(areaH - btnH, 0);
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
+    noBtn.style.left = newX + 'px';
+    noBtn.style.top = newY + 'px';
+  }
+
+  function dodgeNoButton(e) {
+    e.preventDefault();
+    placeNoButtonRandomly();
+  }
+
+  noBtn.addEventListener('mouseenter', dodgeNoButton);
+  noBtn.addEventListener('mouseover', dodgeNoButton);
+  noBtn.addEventListener('touchstart', dodgeNoButton, { passive: false });
+  noBtn.addEventListener('focus', dodgeNoButton);
+  // just in case a fast click ever lands on it, dodge instead of registering
+  noBtn.addEventListener('click', dodgeNoButton);
+
+  yesBtn.onclick = () => {
+    feedback.style.display = 'none';
+    revealResult();
   };
 
   function startSparkles() {
@@ -744,6 +983,7 @@
     cakeMessage.style.display = 'none';
     quiz.style.display = 'block';
     result.style.display = 'none';
+    feedback.style.display = 'none';
     timerScore.style.display = 'block';
     liveScoreEl.textContent = score;
     timerEl.textContent = seconds;
@@ -763,9 +1003,10 @@
 
     const shuffledOptions = shuffle(q.options);
     
-    shuffledOptions.forEach(opt => {
+    shuffledOptions.forEach((opt, i) => {
       const btn = document.createElement('button');
       btn.textContent = opt;
+      btn.classList.add(i % 2 === 0 ? 'answer-teal' : 'answer-pink');
       btn.onclick = () => {
         disableButtons();
         if (opt === q.answer) {
@@ -792,11 +1033,20 @@
     answersEl.querySelectorAll('button').forEach(b => b.disabled = true);
   }
 
+  // Quiz finished: ask the feedback question first, before revealing the result screen
   function showResult() {
     quiz.style.display = 'none';
+    clearInterval(timerInterval);
+    feedback.style.display = 'block';
+    // reset the No button to a starting spot each time this shows
+    noBtn.style.left = '10px';
+    noBtn.style.top = '90px';
+  }
+
+  // The actual results screen, shown once "Yes" is clicked
+  function revealResult() {
     result.style.display = 'block';
     scoreText.textContent = `You got ${score} out of ${questions.length} correct in ${seconds}s! 🎉`;
-    clearInterval(timerInterval);
     startConfetti();
     if (score === questions.length) {
       cakeSurprise.style.display = 'flex';
